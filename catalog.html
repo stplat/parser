@@ -1,0 +1,646 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  
+
+  <link rel="stylesheet" href="style.css"/>
+  <script src="main.js"></script>
+</head>
+<body onclick="">
+<header class="header">
+  <div class="header__cap">
+    <div class="header-cap">
+      <div class="header-cap__nav">
+        <a href="" class="header-bar"><span class="header-bar__ico"><span
+                class="header-bar__inner"></span></span></a>
+        <ul class="header-nav">
+          <li class="header-nav__el">
+            <a href="/" class="header-nav__link header-nav__link--home">Главная</a>
+          </li>
+          <li class="header-nav__el">
+            <a href="" class="header-nav__link header-nav__link--cat">Каталог</a>
+            <ul class="header-nav__subnav">
+              <li class="header-nav__el">
+                <a href="" class="header-nav__link">Назад</a>
+              </li>
+              <?php foreach ($data['layout']['categories'] as $category) : ?>
+              <li class="header-nav__el">
+                <a href="" onclick="return false;"
+                   class="header-nav__link"><?php $this->htmlout($category['name']); ?></a>
+                <ul class="header-nav__subnav">
+                  <li class="header-nav__el">
+                    <a href="" class="header-nav__link">Назад</a>
+                  </li>
+                  <?php foreach ($data['layout']['categories'] as $category) : ?>
+                  <li class="header-nav__el">
+                    <a href="" onclick="return false;"
+                       class="header-nav__link"><?php $this->htmlout($category['name']); ?></a>
+                  </li>
+                  <?php endforeach; ?>
+                </ul>
+              </li>
+              <?php endforeach; ?>
+            </ul>
+          </li>
+          <li class="header-nav__el">
+            <a href="/shipping" class="header-nav__link header-nav__link--ship">Доставка</a>
+          </li>
+          <li class="header-nav__el">
+            <a href="/payment" class="header-nav__link header-nav__link--pay">Оплата</a>
+          </li>
+          <li class="header-nav__el">
+            <a href="/contacts" class="header-nav__link header-nav__link--info">Контакты</a>
+          </li>
+        </ul>
+      </div>
+      <div class="header-cap__filter">
+        <a href="" class="header-filter"><i class="header-filter__ico"></i></a>
+      </div>
+      <div class="header-cap__search">
+        <a href="" class="header-lens"><i class="header-lens__ico"></i></a>
+        <div class="header-search">
+          <div class="header-search__line"><input type="search" placeholder="Поиск товаров по названию или артикулу">
+          </div>
+          <div class="header-search__button">
+            <button></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header__mid">
+    <div class="header-mid">
+      <div class="header-mid__feedback">
+        <div class="header-phone">
+          <a href="tel:+74952039696">+7 (495) 203-96-96</a>
+        </div>
+        <ul class="header-feedback">
+          <li class="header-feedback__el">Пн-пт 10:00 - 18:00</li>
+          <li class="header-feedback__el"><a href="" class="callback">Заказать обратный звонок</a></li>
+        </ul>
+      </div>
+      <div class="header-mid__logo">
+        <a href="/" class="logo">
+          <img src="images/logo.svg" alt="Интернет-магазин ювелирных православных изделий">
+        </a>
+      </div>
+      <div class="header-mid__cart">
+        <div class="cart">
+          <div class="cart__wrapper">
+            <a href="/cart" class="cart__checkout js-cartcount">
+              Корзина&nbsp;[<span><?php echo $data['layout']['session']['cartCount']; ?></span>]</a>
+            <a href="" class="cart__preview"></a>
+            <div class="cart-dropbox">
+              <div class="cart-dropbox__quantity js-cartcount">
+                Количество: <span><?php echo $data['layout']['session']['cartCount']; ?></span>
+              </div>
+              <div class="cart-dropbox__items">
+                <div class="cart-item">
+                  <div class="cart-item__main">
+                    <div class="cart-item__name">Икона божией матери споручница грешных 08537</div>
+                    <div class="cart-item__price">1 x 1600</div>
+                  </div>
+                  <div class="cart-item__rside">
+                    <div class="cart-item__image">
+                      <img src="images/items/item83511540324882.png" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cart-dropbox__total">
+                <span>Итого:</span>
+                <span class="js-carttotal"><?php echo $data['layout']['session']['cartTotal']; ?></span>
+              </div>
+              <div class="cart-dropbox__button">
+                <a href="/cart" class="button">Оформить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="header__menu">
+    <ul class="menu">
+      <?php foreach ($data['layout']['categories'] as $category) : ?>
+      <li class="menu__el">
+        <a href="" onclick="return false;" class="menu__link"><?php $this->htmlout($category['name']); ?></a>
+        <ul class="menu-submenu">
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик серебрянный</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик православный</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+        </ul>
+      </li>
+      <?php endforeach; ?>
+    </ul>
+  </nav>
+</header>
+<section class="main">
+  <ul class="breadcrumbs">
+  <li class="breadcrumbs__list"><a href="/" class="breadcrumbs__link">Главная</a></li>
+  <li class="breadcrumbs__list"><a href="" class="breadcrumbs__link">Каталог</a></li>
+  <li class="breadcrumbs__list">Православные крестики</li>
+</ul>
+<div class="catalog">
+  <div class="catalog__wrapper">
+    <div class="catalog__aside">
+      <div class="catalog__aside-title">
+        <h1>Православные крестики</h1>
+      </div>
+      <div class="filter" data-event-target="js-filter">
+        <div class="filter__header">Фильтр и сортировка</div>
+        <div class="filter__body">
+          <div class="filter__title filter__title--sort">Сортировка</div>
+          <div class="switch">
+            <div class="switch__button">
+              <input type="radio" id="nameasc" form="filter" name="orderby" value="nameasc" checked>
+              <label for="nameasc">А-я</label>
+            </div>
+            <div class="switch__button">
+              <input type="radio" id="popularity" form="filter" name="orderby" value="popularity">
+              <label for="popularity">Рейтинг</label>
+            </div>
+            <div class="switch__button priceasc">
+              <input type="radio" id="priceasc" form="filter" name="orderby" value="priceasc">
+              <label for="priceasc" class="priceasc">Цена</label>
+            </div>
+            <div class="switch__button pricedesc">
+              <input type="radio" id="pricedesc" form="filter" name="orderby" value="pricedesc">
+              <label for="pricedesc" class="pricedesc">Цена</label>
+            </div>
+          </div>
+          <div class="toggle">
+            <div class="toggle__name">Только освященные изделия</div>
+            <div class="toggle__button">
+              <input type="checkbox" id="bless" form="filter" name="bless">
+              <label for="bless"></label>
+            </div>
+          </div>
+          <div class="filter__title filter__title--filter">Фильтр</div>
+          <div class="filter__box">
+            <a href="" class="filter__box-name">Категория</a>
+            <div class="filter__box-content">
+              <ul class="category">
+                <li class="category__link">
+                  <input type="radio" id="category_1" form="filter" name="category" value="1">
+                  <label for="category_1" class="krestik">Крестики</label>
+                </li>
+                <li class="category__link">
+                  <input type="radio" id="category_2" form="filter" name="category" value="1">
+                  <label for="category_2" class="obrazok">Образки</label>
+                </li>
+                <li class="category__link">
+                  <input type="radio" id="category_3" form="filter" name="category" value="1">
+                  <label for="category_3" class="busina">Бусины</label>
+                </li>
+                <li class="category__link">
+                  <input type="radio" id="category_4" form="filter" name="category" value="1">
+                  <label for="category_4" class="kolco">Кольца</label>
+                </li>
+                <li class="category__link">
+                  <input type="radio" id="category_5" form="filter" name="category" value="1">
+                  <label for="category_5" class="braslet">Мощевики и складни</label>
+                </li>
+                <li class="category__link">
+                  <input type="radio" id="category_6" form="filter" name="category" value="1">
+                  <label for="category_6" class="moshevikskladen">Мощевики и складни</label>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="filter__box">
+            <a href="" class="filter__box-name">Подкатегория</a>
+            <div class="filter__box-content">
+              <div class="filter__box-content-wrap">
+                <div class="checkbox">
+                  <input type="checkbox" id="subcategories_1" form="filter" name="subcategories[]" value="1">
+                  <label for="subcategories_1">Большой крест</label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="subcategories_2" form="filter" name="subcategories[]" value="2">
+                  <label for="subcategories_2">Средний крест</label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="subcategories_3" form="filter" name="subcategories[]" value="3">
+                  <label for="subcategories_3">Маленький крест</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="filter__box">
+            <a href="" class="filter__box-name">Материал</a>
+            <div class="filter__box-content">
+              <div class="filter__box-content-wrap">
+                <div class="checkbox">
+                  <input type="checkbox" id="subcategories_1" form="filter" name="subcategories[]" value="1">
+                  <label for="subcategories_1">Большой крест</label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="subcategories_2" form="filter" name="subcategories[]" value="2">
+                  <label for="subcategories_2">Средний крест</label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="subcategories_3" form="filter" name="subcategories[]" value="3">
+                  <label for="subcategories_3">Маленький крест</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="filter__box">
+            <a href="" class="filter__box-name">Техника</a>
+            <div class="filter__box-content">
+              <div class="filter__box-content-wrap">
+                <div class="checkbox">
+                  <input type="checkbox" id="subcategories_1" form="filter" name="subcategories[]" value="1">
+                  <label for="subcategories_1">Большой крест</label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="subcategories_2" form="filter" name="subcategories[]" value="2">
+                  <label for="subcategories_2">Средний крест</label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="subcategories_3" form="filter" name="subcategories[]" value="3">
+                  <label for="subcategories_3">Маленький крест</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="filter__box">
+            <a href="" class="filter__box-name">Производитель</a>
+            <div class="filter__box-content">
+              <div class="filter__box-content-wrap">
+                <div class="checkbox">
+                  <input type="checkbox" id="subcategories_1" form="filter" name="subcategories[]" value="1">
+                  <label for="subcategories_1">Большой крест</label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="subcategories_2" form="filter" name="subcategories[]" value="2">
+                  <label for="subcategories_2">Средний крест</label>
+                </div>
+                <div class="checkbox">
+                  <input type="checkbox" id="subcategories_3" form="filter" name="subcategories[]" value="3">
+                  <label for="subcategories_3">Маленький крест</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="filter__box">
+            <a href="" class="filter__box-name">Стоимость</a>
+            <div class="filter__box-content">
+              <div class="limit">
+                <label class="limit__label" for="min-price">минимальная стоимость:</label>
+                <input type="limit" class="limit__input" id="min-price" form="filter"
+                       name="manufacturers[]" value="" checked>
+                <label class="limit__label" for="max-price">максимальная стоимость:</label>
+                <input type="limit" class="limit__input" id="max-price" form="filter"
+                       name="manufacturers[]" value="">
+              </div>
+            </div>
+          </div>
+          <div class="filter__reset">Сбросить</div>
+        </div>
+      </div>
+    </div>
+    <div class="catalog__content">
+      <div class="catalog__content-panel">
+        <div class="catalog__total">показано товаров: 4515 из 5404</div>
+        <div class="catalog__per-page">
+          <select class="select" form="filter" name="orderby">
+            <option class="select__option" value="1">показывать по 12</option>
+            <option class="select__option" value="2">показывать по 24</option>
+            <option class="select__option" value="3">показывать по 48</option>
+          </select>
+        </div>
+      </div>
+      <div class="catalog__content-items">
+        <div class="item">
+          <span class="item__sign">Акимов</span>
+          <span class="item__article">8455123</span>
+          <div class="item__image">
+            <img src="/custom/images/items/item76311540324881.jpg" alt="">
+          </div>
+          <div class="item__name">
+            <a href="/catalog/item?id=763"
+               class="item__name-link">Распятие Христово. Православный крест</a>
+          </div>
+          <div class="item__price">2150</div>
+          <div class="item__button">
+            <a href="/catalog/item?id=714" class="button">Подробнее</a>
+          </div>
+        </div>
+        <div class="item">
+          <span class="item__sign">Акимов</span>
+          <span class="item__article">8455123</span>
+          <div class="item__image">
+            <img src="/custom/images/items/item76311540324881.jpg" alt="">
+          </div>
+          <div class="item__name">
+            <a href="/catalog/item?id=763"
+               class="item__name-link">Распятие Христово. Православный крест</a>
+          </div>
+          <div class="item__price">2150</div>
+          <div class="item__button">
+            <a href="'/catalog/item?id=714" class="button">Подробнее</a>
+          </div>
+        </div>
+        <div class="item">
+          <span class="item__sign">Акимов</span>
+          <span class="item__article">8455123</span>
+          <div class="item__image">
+            <img src="/custom/images/items/item76311540324881.jpg" alt="">
+          </div>
+          <div class="item__name">
+            <a href="/catalog/item?id=763"
+               class="item__name-link">Распятие Христово. Православный крест</a>
+          </div>
+          <div class="item__price">2150</div>
+          <div class="item__button">
+            <a href="'/catalog/item?id=714" class="button">Подробнее</a>
+          </div>
+        </div>
+        <div class="item">
+          <span class="item__sign">Акимов</span>
+          <span class="item__article">8455123</span>
+          <div class="item__image">
+            <img src="/custom/images/items/item76311540324881.jpg" alt="">
+          </div>
+          <div class="item__name">
+            <a href="/catalog/item?id=763"
+               class="item__name-link">Распятие Христово. Православный крест</a>
+          </div>
+          <div class="item__price">2150</div>
+          <div class="item__button">
+            <a href="'/catalog/item?id=714" class="button">Подробнее</a>
+          </div>
+        </div>
+        <div class="item">
+          <span class="item__sign">Акимов</span>
+          <span class="item__article">8455123</span>
+          <div class="item__image">
+            <img src="/custom/images/items/item76311540324881.jpg" alt="">
+          </div>
+          <div class="item__name">
+            <a href="/catalog/item?id=763"
+               class="item__name-link">Распятие Христово. Православный крест</a>
+          </div>
+          <div class="item__price">2150</div>
+          <div class="item__button">
+            <a href="'/catalog/item?id=714" class="button">Подробнее</a>
+          </div>
+        </div>
+        <div class="item">
+          <span class="item__sign">Акимов</span>
+          <span class="item__article">8455123</span>
+          <div class="item__image">
+            <img src="/custom/images/items/item76311540324881.jpg" alt="">
+          </div>
+          <div class="item__name">
+            <a href="/catalog/item?id=763"
+               class="item__name-link">Распятие Христово. Православный крест</a>
+          </div>
+          <div class="item__price">2150</div>
+          <div class="item__button">
+            <a href="'/catalog/item?id=714" class="button">Подробнее</a>
+          </div>
+        </div>
+        <div class="item">
+          <span class="item__sign">Акимов</span>
+          <span class="item__article">8455123</span>
+          <div class="item__image">
+            <img src="/custom/images/items/item76311540324881.jpg" alt="">
+          </div>
+          <div class="item__name">
+            <a href="/catalog/item?id=763"
+               class="item__name-link">Распятие Христово. Православный крест</a>
+          </div>
+          <div class="item__price">2150</div>
+          <div class="item__button">
+            <a href="'/catalog/item?id=714" class="button">Подробнее</a>
+          </div>
+        </div>
+        <div class="item">
+          <span class="item__sign">Акимов</span>
+          <span class="item__article">8455123</span>
+          <div class="item__image">
+            <img src="/custom/images/items/item76311540324881.jpg" alt="">
+          </div>
+          <div class="item__name">
+            <a href="/catalog/item?id=763"
+               class="item__name-link">Распятие Христово. Православный крест</a>
+          </div>
+          <div class="item__price">2150</div>
+          <div class="item__button">
+            <a href="'/catalog/item?id=714" class="button">Подробнее</a>
+          </div>
+        </div>
+      </div>
+      <div class="catalog__pagination">
+        <ul class="pagination">
+          <li class="pagination__prev">
+            <a href="" class="pagination__link">«</a>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="1" id="page_1" hidden checked>
+            <label for="page_1" class="pagination__link">1</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="2" id="page_2" hidden>
+            <label for="page_2" class="pagination__link">2</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="3" id="page_3" hidden>
+            <label for="page_3" class="pagination__link">3</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="4" id="page_4" hidden>
+            <label for="page_4" class="pagination__link">4</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="5" id="page_5" hidden>
+            <label for="page_5" class="pagination__link">5</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="6" id="page_6" hidden>
+            <label for="page_6" class="pagination__link">6</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="7" id="page_7" hidden>
+            <label for="page_7" class="pagination__link">7</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="8" id="page_8" hidden>
+            <label for="page_8" class="pagination__link">8</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="9" id="page_9" hidden>
+            <label for="page_9" class="pagination__link">9</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="10" id="page_10" hidden>
+            <label for="page_10" class="pagination__link">10</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="11" id="page_11" hidden>
+            <label for="page_11" class="pagination__link">11</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="12" id="page_12" hidden>
+            <label for="page_12" class="pagination__link">12</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="13" id="page_13" hidden>
+            <label for="page_13" class="pagination__link">13</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="14" id="page_14" hidden>
+            <label for="page_14" class="pagination__link">14</label>
+          </li>
+          <li class="pagination__elem">
+            <input type="radio" form="filter" name="pagination" value="15" id="page_15" hidden>
+            <label for="page_15" class="pagination__link">15</label>
+          </li>
+          <li class="pagination__next">
+            <a href="" class="pagination__link">»</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer-top">
+      <div class="footer-top__logo">
+        <a href="" class="logo">
+          <img src="/webroot/custom/images/logo-white.svg" alt="Интернет-магазин православных изделий">
+        </a>
+        <div class="footer-top__props">ИП: Никитин Б.В.<br>ОГРНИП: 313774628200454</div>
+      </div>
+      <div class="footer-top__nav">
+        <div class="footer-nav">
+          <a href="" class="footer-nav__link">Главная</a>
+          <a href="" class="footer-nav__link">Доставка</a>
+          <a href="" class="footer-nav__link">Оплата</a>
+          <a href="" class="footer-nav__link">Контакты</a>
+          <a href="" class="footer-nav__link">Корзина</a>
+        </div>
+      </div>
+      <div class="footer-top__menu">
+        <div class="footer-nav">
+          <?php foreach ($data['layout']['categories'] as $category) : ?>
+          <a href="/catalog?category=<?php $this->htmlout($category['id']); ?>"
+             class="footer-nav__link"><?php $this->htmlout($category['name']); ?></a>
+          <?php endforeach; ?>
+        </div>
+      </div>
+      <div class="footer-top__feedback">
+        <div class="footer__phone"><a href="tel:+74952039696">+7 (495) 203-96-96</a></div>
+        <div class="footer__text">
+          <p>Приём заказов по телефону:<br/>
+            пн-пт c 10:00 до 19:00 (МСК)
+          <p>Заказы через интернет – круглосуточно
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__copyright">
+    <div class="footer-copyright">Интернет-магазин ювелирных изделий vecheria.ru. All rights reserved ©2018г.</div>
+  </div>
+</footer>
+<div class="popup js-callback">
+  <div class="popup__container">
+    <div class="popup__header">
+      <div class="popup-header">
+        <div class="popup-header__title">Заявка на обратный звонок</div>
+        <div class="popup-header__close">
+          <a href="" class="popup-close">
+            <span class="popup-close__inner"></span>
+          </a>
+        </div>
+        <p class="popup-header__text">
+          Оставьте свои контактные данные и мы свяжемся с Вами в самое ближайшее время!
+        </p>
+      </div>
+    </div>
+    <div class="popup__body">
+      <div class="popup-form">
+        <form id="callback"></form>
+        <div class="popup-form__line" data-validate="">
+          <label for="callbackname" class="popup-form__label">Имя:</label>
+          <div class="popup-form__input">
+            <input form="callback" name="callbackname" id="callbackname" placeholder="Иванов Иван Иванович">
+            <label for="callbackname" class="popup-form__ico popup-form__ico--name"></label>
+          </div>
+        </div>
+        <div class="popup-form__line" data-validate="">
+          <label for="callbackphone" class="popup-form__label">Телефон:</label>
+          <div class="popup-form__input">
+            <input type="tel" form="callback" name="callbackphone" id="callbackphone"
+                   placeholder="Пример: +7 (495) 000-00-00">
+            <label for="callbackphone" class="popup-form__ico popup-form__ico--phone"></label>
+          </div>
+        </div>
+        <div class="popup__button">
+          <button form="callback" class="button">Отправить заявку</button>
+        </div>
+        <div class="popup-form__offer">Отправляя заявку, Вы соглашаетесь на обработку персональных данных</div>
+      </div>
+    </div>
+    <div class="popup__success">Заявка успешно отправлена!</div>
+  </div>
+</div><!--
+<script>
+  (function (d, w, c) {
+    (w[c] = w[c] || []).push(function () {
+      try {
+        w.yaCounter47722900 = new Ya.Metrika({
+          id: 47722900,
+          clickmap: true,
+          trackLinks: true,
+          accurateTrackBounce: true,
+          webvisor: true
+        });
+      } catch (e) {
+      }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+      s = d.createElement("script"),
+      f = function () {
+        n.parentNode.insertBefore(s, n);
+      };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+      d.addEventListener("DOMContentLoaded", f, false);
+    } else {
+      f();
+    }
+  })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>
+  <div><img src="https://mc.yandex.ru/watch/47722900" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>-->
+</body>
+</html>

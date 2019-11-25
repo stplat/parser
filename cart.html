@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width">
+  <meta name="yandex-verification" content="2ff68d0f217a770e"/>
+  <meta name="robots" content="<?php $this->htmlout($data['layout']['elements']['metakeywords']); ?>"/>
+  <meta name="keywords" content="<?php $this->htmlout($data['layout']['elements']['metakeywords']); ?>"/>
+  <meta name="description"
+        content="<?php $this->htmlout($data['layout']['elements']['metadescription']); ?>"/>
+  <meta name="format-detection" content="telephone=no">
+  <title><?php $this->htmlout($data['layout']['elements']['title']); ?></title>
+  <link rel="shortcut icon" href="/webroot/custom/images/favicon.ico"/>
+  <link rel="apple-touch-icon" href="/webroot/custom/images/logo.svg"/>
+
+  <link rel="stylesheet" href="style.css"/>
+  <script src="main.js"></script>
+</head>
+<body onclick="">
+<header class="header">
+  <div class="header__cap">
+    <div class="header-cap">
+      <div class="header-cap__nav">
+        <a href="" class="header-bar"><span class="header-bar__ico"><span
+                class="header-bar__inner"></span></span></a>
+        <ul class="header-nav">
+          <li class="header-nav__el">
+            <a href="/" class="header-nav__link header-nav__link--home">Главная</a>
+          </li>
+          <li class="header-nav__el">
+            <a href="" class="header-nav__link header-nav__link--cat">Каталог</a>
+            <ul class="header-nav__subnav">
+              <li class="header-nav__el">
+                <a href="" class="header-nav__link">Назад</a>
+              </li>
+              <?php foreach ($data['layout']['categories'] as $category) : ?>
+              <li class="header-nav__el">
+                <a href="" onclick="return false;"
+                   class="header-nav__link"><?php $this->htmlout($category['name']); ?></a>
+                <ul class="header-nav__subnav">
+                  <li class="header-nav__el">
+                    <a href="" class="header-nav__link">Назад</a>
+                  </li>
+                  <?php foreach ($data['layout']['categories'] as $category) : ?>
+                  <li class="header-nav__el">
+                    <a href="" onclick="return false;"
+                       class="header-nav__link"><?php $this->htmlout($category['name']); ?></a>
+                  </li>
+                  <?php endforeach; ?>
+                </ul>
+              </li>
+              <?php endforeach; ?>
+            </ul>
+          </li>
+          <li class="header-nav__el">
+            <a href="/shipping" class="header-nav__link header-nav__link--ship">Доставка</a>
+          </li>
+          <li class="header-nav__el">
+            <a href="/payment" class="header-nav__link header-nav__link--pay">Оплата</a>
+          </li>
+          <li class="header-nav__el">
+            <a href="/contacts" class="header-nav__link header-nav__link--info">Контакты</a>
+          </li>
+        </ul>
+      </div>
+      <div class="header-cap__filter">
+        <a href="" class="header-filter"><i class="header-filter__ico"></i></a>
+      </div>
+      <div class="header-cap__search">
+        <a href="" class="header-lens"><i class="header-lens__ico"></i></a>
+        <div class="header-search">
+          <div class="header-search__line"><input type="search" placeholder="Поиск товаров по названию или артикулу">
+          </div>
+          <div class="header-search__button">
+            <button></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header__mid">
+    <div class="header-mid">
+      <div class="header-mid__feedback">
+        <div class="header-phone">
+          <a href="tel:+74952039696">+7 (495) 203-96-96</a>
+        </div>
+        <ul class="header-feedback">
+          <li class="header-feedback__el">Пн-пт 10:00 - 18:00</li>
+          <li class="header-feedback__el"><a href="" class="callback">Заказать обратный звонок</a></li>
+        </ul>
+      </div>
+      <div class="header-mid__logo">
+        <a href="/" class="logo">
+          <img src="/webroot/custom/images/logo.svg" alt="Интернет-магазин ювелирных православных изделий">
+        </a>
+      </div>
+      <div class="header-mid__cart">
+        <div class="cart">
+          <div class="cart__wrapper">
+            <a href="/cart" class="cart__checkout js-cartcount">
+              Корзина&nbsp;[<span><?php echo $data['layout']['session']['cartCount']; ?></span>]</a>
+            <a href="" class="cart__preview"></a>
+            <div class="cart-dropbox">
+              <div class="cart-dropbox__quantity js-cartcount">
+                Количество: <span><?php echo $data['layout']['session']['cartCount']; ?></span>
+              </div>
+              <div class="cart-dropbox__items">
+                <div class="cart-item">
+                  <div class="cart-item__main">
+                    <div class="cart-item__name">Икона божией матери споручница грешных 08537</div>
+                    <div class="cart-item__price">1 x 1600</div>
+                  </div>
+                  <div class="cart-item__rside">
+                    <div class="cart-item__image">
+                      <img src="/webroot/custom/images/items/item83511540324882.png" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cart-dropbox__total">
+                <span>Итого:</span>
+                <span class="js-carttotal"><?php echo $data['layout']['session']['cartTotal']; ?></span>
+              </div>
+              <div class="cart-dropbox__button">
+                <a href="/cart" class="button">Оформить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="header__menu">
+    <ul class="menu">
+      <?php foreach ($data['layout']['categories'] as $category) : ?>
+      <li class="menu__el">
+        <a href="" onclick="return false;" class="menu__link"><?php $this->htmlout($category['name']); ?></a>
+        <ul class="menu-submenu">
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик серебрянный</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик православный</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+        </ul>
+      </li>
+      <?php endforeach; ?>
+    </ul>
+  </nav>
+</header>
+<section class="main">
+  <ul class="breadcrumbs">
+    <li class="breadcrumbs__list"><a href="/" class="breadcrumbs__link">Главная</a></li>
+    <li class="breadcrumbs__list">Корзина</li>
+  </ul>
+  <div class="checkout">
+    <div class="checkout__title">
+      <div class="title">Корзина</div>
+    </div>
+    <div class="checkout__container">
+      <div class="checkout__content">
+        <div class="checkout__screen" data-id="empty">
+          <div class="checkout-screen__title">Ваша корзина пуста</div>
+          <div class="checkout-screen__text">Перейдите в <a href="">Каталог</a>, чтобы подобрать необходимые изделия.
+          </div>
+        </div>
+        <div class="checkout__screen" data-id="1">
+          <?php foreach ($data['index']['items'] as $item) : ?>
+          <div class="checkout-item js-checkoutitem" data-id="<?php $this->htmlout($item['itemid']); ?>"
+               data-cartkey="<?php $this->htmlout($item['itemcartkey']); ?>">
+            <a href="" class="checkout-item__remove"></a>
+            <div class="checkout-item__col">
+              <div class="checkout-item__image">
+                <img src="/custom/images/items/<?php $this->htmlout($item['imagename']); ?>" alt="">
+              </div>
+            </div>
+            <div class="checkout-item__col">
+              <div class="checkout-item__title">Наименование:</div>
+              <div class="checkout-item__name">
+                <a href="/catalog/item?id=<?php $this->htmlout($item['itemid']); ?>">
+                  <?php $this->htmlout($item['itemname']); ?>
+                </a>
+              </div>
+              <div class="checkout-item__price">Цена: <?php $this->htmlout($item['price']); ?> руб.</div>
+            </div>
+            <div class="checkout-item__col">
+              <div class="checkout-item__title">Количество:</div>
+              <div class="checkout-item__quantity">
+                <input class="number" type="number" min="1" max="10"
+                       value="<?php $this->htmlout($item['quantity']); ?>" placeholder="1 шт">
+              </div>
+            </div>
+            <div class="checkout-item__col">
+              <div class="checkout-item__title">Сумма:</div>
+              <div class="checkout-item__total"><?php $this->htmlout($item['total']); ?></div>
+            </div>
+          </div>
+          <?php endforeach; ?>
+        </div>
+        <div class="checkout__screen" data-id="2">
+          <div class="checkout-screen">
+            <div class="checkout-screen__title">Оформление заказа</div>
+            <div class="checkout-screen__content">
+              <div class="checkout-form">
+                <form id="checkout"></form>
+                <div class="checkout-form__line">
+                  <label class="checkout-form__label" for="phone">Телефон:</label>
+                  <input class="checkout-form__input" form="checkout" type="tel" name="phone" id="phone"
+                         placeholder="Пример: +7 (495) 000-00-00" tabindex="1">
+                  <div class="checkout-form__tip"><span class="checkout-tip">Обязательное поле</span></div>
+                </div>
+                <div class="checkout-form__line">
+                  <label class="checkout-form__label" for="city">Город:</label>
+                  <input class="checkout-form__input" form="checkout" name="city" id="city"
+                         placeholder="Город или населенный пункт" tabindex="2">
+                  <div class="checkout-form__tip"><span class="checkout-tip">Обязательное поле</span></div>
+                  <div class="checkout-form__city">Определено автоматически: <a href="">г.Москва</a></div>
+                </div>
+                <div class="checkout-form__line">
+                  <div class="checkout-form__label">Способ доставки:</div>
+                  <div class="checkout-form__radio">
+                    <div class="checkout-radio">
+                      <div class="checkout-radio__input">
+                        <input form="checkout" type="radio" id="pickup" name="deliverytype" value="1" tabindex="3">
+                      </div>
+                      <div class="checkout-radio__label">
+                        <label for="pickup">Самовывоз</label>
+                      </div>
+                    </div>
+                    <div class="checkout-radio">
+                      <div class="checkout-radio__input">
+                        <input form="checkout" type="radio" id="courier" name="deliverytype" value="2" tabindex="4">
+                      </div>
+                      <div class="checkout-radio__label">
+                        <label for="courier">Курьерская доставка</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="checkout-form__tip"><span class="checkout-tip">Обязательное поле</span></div>
+                </div>
+                <div class="checkout-form__line">
+                  <label class="checkout-form__label" for="street">Улица:</label>
+                  <input class="checkout-form__input" form="checkout" name="street" placeholder="Улица" id="street" tabindex="5">
+                  <div class="checkout-form__tip"><span class="checkout-tip">Обязательное поле</span></div>
+                </div>
+                <div class="checkout-form__line">
+                  <label class="checkout-form__label" for="building"></label>
+                  <input class="checkout-form__input" form="checkout" name="building" placeholder="Дом" id="building" tabindex="6">
+                  <div class="checkout-form__tip"><span class="checkout-tip">Обязательное поле</span></div>
+                </div>
+                <div class="checkout-form__line">
+                  <label class="checkout-form__label" for="apartment"></label>
+                  <input class="checkout-form__input" form="checkout" name="apartment" placeholder="Квартира"
+                         id="apartment" tabindex="7">
+                  <div class="checkout-form__tip"><span class="checkout-tip">Обязательное поле</span></div>
+                </div>
+                <div class="checkout-form__line">
+                  <label class="checkout-form__label" for="firstname">Имя:</label>
+                  <input class="checkout-form__input" form="checkout" name="firstname" id="firstname" placeholder="Пример: Иван" tabindex="8">
+                  <div class="checkout-form__tip"><span class="checkout-tip">Обязательное поле</span></div>
+                </div>
+                <div class="checkout-form__line">
+                  <label class="checkout-form__label" for="surname">Фамилия:</label>
+                  <input class="checkout-form__input" form="checkout" name="surname" id="surname" placeholder="Пример: Иванов" tabindex="9">
+                  <div class="checkout-form__tip"></div>
+                </div>
+                <div class="checkout-form__line">
+                  <label class="checkout-form__label" for="email">Электронная почта:</label>
+                  <input class="checkout-form__input" form="checkout" name="email" id="email"
+                         placeholder="Пример: example@example.ru" tabindex="10">
+                  <div class="checkout-form__tip"></div>
+                </div>
+                <div class="checkout-form__line">
+                  <label class="checkout-form__label" for="comment">Комментарий:</label>
+                  <textarea class="checkout-form__input" form="checkout" name="comment" id="comment"
+                            placeholder="Пример: Во дворе злая собака!" tabindex="11"></textarea>
+                  <div class="checkout-form__tip"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="checkout__screen" data-id="3">
+          <div class="checkout-screen">
+            <form id="payment"></form>
+            <div class="checkout-screen__title">Информация о доставке</div>
+            <div class="checkout-screen__content js-shippinginfo">
+            </div>
+            <div class="checkout-screen__title">Способ оплаты</div>
+            <div class="checkout-screen__content">
+              <div class="checkout-screen__shipping">
+                <div class="checkout-radio">
+                  <div class="checkout-radio__input">
+                    <input form="checkout" type="radio" name="paymenttype" id="cash" value="1" tabindex="12">
+                  </div>
+                  <div class="checkout-radio__label">
+                    <label for="cash">
+                      <span class="checkout-radio__title">Оплата наличными курьеру</span>
+                      <span class="checkout-radio__text">Оплата заказа возможна только наличными. Мы будем благодарны, если Вы заранее приготовите
+                      необходимую для оплаты заказа сумму!</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="checkout-radio">
+                  <div class="checkout-radio__input">
+                    <input form="checkout" type="radio" name="paymenttype" id="non-cash" value="2" tabindex="13">
+                  </div>
+                  <div class="checkout-radio__label">
+                    <label for="non-cash">
+                      <span class="checkout-radio__title">Безналичная онлайн-оплата</span>
+                      <span class="checkout-radio__text">Данный способ оплаты осуществляется при помощи сервиса - <a
+                              target="_blank"
+                              href="https://kassa.yandex.ru/about/?source=direct_new&utm_source=yandex&utm_medium=cpc&utm_campaign=kassa&utm_term=%D1%8F%D0%BD%D0%B4%D0%B5%D0%BA%D1%81%20%D0%BA%D0%B0%D1%81%D1%81%D0%B0&utm_content=search,brand,mow,37648454,3512240121,6407266808,none,search,premium,1,%d0%9c%d0%be%d1%81%d0%ba%d0%b2%d0%b0,,no,desktop,0&yclid=7062071251392799198">Яндекс.Касса.</a> Ознакомиться с деталями безопасности можно <a
+                              target="_blank"
+                              href="https://yandex.ru/support/checkout/security.html">здесь</a>.</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="checkout-radio">
+                  <div class="checkout-radio__input">
+                    <input form="checkout" type="radio" name="paymenttype" id="transfer" value="3" tabindex="14">
+                  </div>
+                  <div class="checkout-radio__label">
+                    <label for="transfer">
+                      <span class="checkout-radio__title">Перевод на карту ПАО «Сбербанк»</span>
+                      <span class="checkout-radio__text">Доставка осуществляется только после 100% предоплаты полной стоимости заказа с учетом доставки!</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="checkout__aside">
+        <div class="checkout__aside-box">
+          <ul class="checkout__nav">
+            <li class="checkout__nav-link is-active" data-id="1">Список покупок</li>
+            <li class="checkout__nav-link" data-id="2">Контактные данные</li>
+            <li class="checkout__nav-link" data-id="3">Доставка и оплата</li>
+            <li class="checkout__nav-link" data-id="4">Сведения о заказе</li>
+          </ul>
+        </div>
+        <div class="checkout__aside-box js-ordertotal">
+          <div class="checkout__total">
+            <div class="checkout__total-final js-carttotal"><?php $this->htmlout($data['session']['cartTotal']); ?></div>
+            <a href="" class="button button--red js-ordernext">Оформить заказ</a>
+            <a href="" class="checkout__link js-clear">Очистить корзину</a>
+          </div>
+        </div>
+        <div class="checkout__aside-box js-orderswitch">
+          <div class="checkout__total">
+            <a href="" class="button button--red js-ordernext">Продолжить</a>
+            <a href="" class="checkout__link js-orderprev">Вернуться</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--<div class="width-page">
+    <div class="common-box">
+      <div class="common-box__title common-box__title--orange">Корзина покупок</div>
+      <a href="/catalog" class="cart-comeback"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>Вернуться к покупкам</a>
+      <table class="cart-table">
+        <tr>
+          <th></th>
+          <th>Наименование:</th>
+          <th>Артикул:</th>
+          <th>Размер:</th>
+          <th>Кол-во:</th>
+          <th>Цена:</th>
+          <th></th>
+        </tr>
+        <?php foreach ($data['index']['items'] as $item) : ?>
+          <tr data-id="<?php $this->htmlout($item['itemid']); ?>" data-cartkey="<?php $this->htmlout($item['itemcartkey']); ?>">
+            <td><img src="/custom/images/items/<?php $this->htmlout($item['imagename']); ?>" alt=""></td>
+            <td>
+              <div class="product">
+                <a href="/catalog/item?id=<?php $this->htmlout($item['itemid']); ?>"><?php $this->htmlout($item['itemname']); ?></a>
+                <div class="product__desc">
+                  <?php foreach ($item['materials'] as $material) : ?>
+                    <span class="few-values"><?php $this->htmlout($material['name']); ?></span>
+                  <?php endforeach; ?>
+                  <?php foreach ($item['technics'] as $technics) : ?>
+                    <span class="few-values"><?php $this->htmlout($technics['name']); ?></span>
+                  <?php endforeach; ?>
+                  <?php if (!empty($item['manufacturername'])) : ?>
+                    <span class="few-values"><?php $this->htmlout($item['manufacturername']); ?></span>
+                  <?php endif; ?>
+                  <?php if (!empty($item['collection']['name'])) : ?>
+                    <span class="few-values"><?php $this->htmlout($item['collection']['name']); ?></span>
+                  <?php endif; ?>
+                </div>
+              </div>
+            <td class="hidden-md">
+              <div class="price"><?php $this->htmlout($item['total']); ?></div>
+            </td>
+            </td>
+            <td><span class="article"><?php $this->htmlout($item['itemarticle']); ?></span></td>
+            <td>
+              <div class="size" onclick="cart.modify(event)">
+                <?php if (!empty($item['sizes'])) : ?>
+                  <div class="custom-select">
+                    <input type="text" name="size" value="" data-id="" disabled>
+                    <div class="select-options">
+                      <?php foreach ($item['sizes'] as $size) : ?>
+                        <button data-id="<?php $this->htmlout($size['id']); ?>" data-selected="<?php if ($size['selected'] == '1') {
+    echo 'selected';
+  } ?>"><?php $this->htmlout($size['name']); ?>
+                        </button>
+                      <?php endforeach; ?>
+                    </div>
+                  </div>
+                <?php endif; ?>
+              </div>
+            </td>
+            <td>
+              <div class="quantity">
+                <div class="custom-number">
+                  <span class="number-min"></span><input type="text" name="quantity" value="<?php $this->htmlout($item['quantity']); ?>" data-id="1"><span class="number-max"></span>
+                </div>
+              </div>
+            </td>
+            <td class="hidden-xd">
+              <div class="price" data-replace="price"><?php $this->htmlout($item['total']); ?></div>
+            </td>
+            <td>
+              <div class="remove" onclick="cart.delete(<?php $this->htmlout($item['itemcartkey']); ?>)">
+                <span class="cart-remove"><i class="fa fa-times" aria-hidden="true"></i></span>
+              </div>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+        <tr>
+          <td colspan="5" class="hidden-xd">
+            <div class="result">Итого:</div>
+          </td>
+          <td colspan="2" class="hidden-xd">
+            <div class="price" id="cart-total" data-replace="price"><?php $this->htmlout($data['session']['cartTotal']); ?></div>
+          </td>
+        </tr>
+      </table>
+      <div class="ordering-button">
+        <div class="wrapper">
+          <span class="order-clear" onclick="cart.clear(event)">очистить корзину</span>
+          <button class="button" onclick="cart.openorder();yaCounter47722900.reachGoal('TARGET'); return true;">Оформить заказ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="width-page ordering-box">
+    <div class="width-page__asider">
+      <div class="common-box">
+        <div class="common-box__title common-box__title--orange">Доставка и оплата</div>
+        <div class="common-box__content">
+          <div class="common-box__subtitle">Способ доставки:</div>
+          <div class="params">
+            <?php foreach ($data['index']['deliverytypes'] as $deliverytypes) : ?>
+              <div class="custom-radio">
+                <input type="radio" form="ordering" name="deliverytype" data-id="<?php $this->htmlout($deliverytypes['id']); ?>"> <span class="radio-square" data-check=""></span> <span class="radio-text"><?php $this->htmlout($deliverytypes['name']); ?></span>
+              </div>
+            <?php endforeach; ?>
+          </div>
+          <div class="common-box__subtitle">Способ оплаты:</div>
+          <div class="params">
+            <?php foreach ($data['index']['paymenttypes'] as $paymenttypes) : ?>
+              <div class="custom-radio">
+                <input type="radio" form="ordering" name="paymenttype" data-id="<?php $this->htmlout($paymenttypes['id']); ?>"> <span class="radio-square" data-check=""></span> <span class="radio-text"><?php $this->htmlout($paymenttypes['name']); ?></span>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="width-page__frontr">
+      <div class="alert">Необходимо указать Ваш контактный телефон!</div>
+      <div class="common-box">
+        <div class="common-box__title-box">
+          <div class="text">Оформление заказа</div>
+          <!--<div class="required-desc">поля отмеченные  обязательны к заполнению</div>
+        </div>
+        <div class="ordering">
+          <form method="POST" id="ordering" onsubmit="cart.ordering(event)">
+            <div class="ordering-field">
+              <label for="phone">Телефон</label> <input form="ordering" placeholder="" id="phone" name="phone"> <span class="tooltip">обазательное поле</span>
+            </div>
+            <div class="ordering-field">
+              <label for="town">Адрес</label> <input form="ordering" placeholder="Город" id="town" name="town"> <span class="tooltip">обазательное поле</span>
+            </div>
+            <div class="ordering-field">
+              <input form="ordering" placeholder="Улица" name="street"> <span class="tooltip">обазательное поле</span>
+            </div>
+            <div class="ordering-field">
+              <input form="ordering" placeholder="Дом" name="building"> <span class="tooltip">обазательное поле</span>
+            </div>
+            <div class="ordering-field">
+              <input form="ordering" placeholder="Квартира" name="apartment">
+            </div>
+            <div class="ordering-field">
+              <label for="secondname">Фамилия</label> <input form="ordering" placeholder="" id="secondname" name="secondname">
+            </div>
+            <div class="ordering-field">
+              <label for="firstname">Имя</label> <input form="ordering" placeholder="" id="firstname" name="firstname"> <span class="tooltip">обазательное поле</span>
+            </div>
+            <div class="ordering-field">
+              <label for="email">Электронная почта</label> <input form="ordering" placeholder="example@example.ru" id="email" name="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+            </div>
+            <!--<div class="ordering-field">
+              <div class="custom-checkbox">
+                <input type="checkbox" name="requirment" data-id=""> <span class="checkbox-square" data-check=""></span> <span class="checkbox-text">Я хочу получать оповещения о промокодах, акциях и распродажах на почту</span>
+              </div>
+            </div>
+            <div class="ordering-field">
+              <label for="comment">Комментарий</label> <textarea id="comment" name="comment" form="ordering"></textarea>
+            </div>
+          </form>
+          <div class="price-box">
+            <div class="field">
+              <span class="key">товаров на сумму:</span> <span class="value" id="item-total" data-replace="price"><?php $this->htmlout($data['session']['cartTotal']); ?></span>
+            </div>
+            <div class="field">
+              <span class="key">стоимость доставки уточняйте у менеджера</span>
+              <!--<span class="value" id="ship-total">-</span>
+            </div>
+            <div class="field">
+              <span class="key">Общая стоимость покупки:</span> <span class="value" id="order-total" data-replace="price"><?php $this->htmlout($data['session']['cartTotal']); ?></span>
+            </div>
+          </div>
+        </div>
+        <div class="button-box">
+          <span>Нажимая на кнопку «Отправить заказ», Вы соглашаетесь на обработку Ваших персональных данных!</span>
+          <button form="ordering" class="button">Отправить заказ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="popup" data-popup="thankyou" onclick="popup.close(event)">
+    <div class="popup-window">
+      <div class="popup-header">
+        <div class="popup-title popup-title-orange">Оформление заказа</div>
+        <span class="popup-close"></span>
+      </div>
+      <div class="popup-content">
+        <div class="popup-field"><i>Ваш заказ оформлен!</i><br/>Ожидайте звонка! Спасибо!</div>
+      </div>
+    </div>
+  </div>-->
+</section>
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer-top">
+      <div class="footer-top__logo">
+        <a href="" class="logo">
+          <img src="/webroot/custom/images/logo-white.svg" alt="Интернет-магазин православных изделий">
+        </a>
+        <div class="footer-top__props">ИП: Никитин Б.В.<br>ОГРНИП: 313774628200454</div>
+      </div>
+      <div class="footer-top__nav">
+        <div class="footer-nav">
+          <a href="" class="footer-nav__link">Главная</a>
+          <a href="" class="footer-nav__link">Доставка</a>
+          <a href="" class="footer-nav__link">Оплата</a>
+          <a href="" class="footer-nav__link">Контакты</a>
+          <a href="" class="footer-nav__link">Корзина</a>
+        </div>
+      </div>
+      <div class="footer-top__menu">
+        <div class="footer-nav">
+          <?php foreach ($data['layout']['categories'] as $category) : ?>
+          <a href="/catalog?category=<?php $this->htmlout($category['id']); ?>"
+             class="footer-nav__link"><?php $this->htmlout($category['name']); ?></a>
+          <?php endforeach; ?>
+        </div>
+      </div>
+      <div class="footer-top__feedback">
+        <div class="footer__phone"><a href="tel:+74952039696">+7 (495) 203-96-96</a></div>
+        <div class="footer__text">
+          <p>Приём заказов по телефону:<br/>
+            пн-пт c 10:00 до 19:00 (МСК)
+          <p>Заказы через интернет – круглосуточно
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__copyright">
+    <div class="footer-copyright">Интернет-магазин ювелирных изделий vecheria.ru. All rights reserved ©2018г.</div>
+  </div>
+</footer>
+<div class="popup js-callback">
+  <div class="popup__container">
+    <div class="popup__header">
+      <div class="popup-header">
+        <div class="popup-header__title">Заявка на обратный звонок</div>
+        <div class="popup-header__close">
+          <a href="" class="popup-close">
+            <span class="popup-close__inner"></span>
+          </a>
+        </div>
+        <p class="popup-header__text">
+          Оставьте свои контактные данные и мы свяжемся с Вами в самое ближайшее время!
+        </p>
+      </div>
+    </div>
+    <div class="popup__body">
+      <div class="popup-form">
+        <form id="callback"></form>
+        <div class="popup-form__line" data-validate="">
+          <label for="callbackname" class="popup-form__label">Имя:</label>
+          <div class="popup-form__input">
+            <input form="callback" name="callbackname" id="callbackname" placeholder="Иванов Иван Иванович">
+            <label for="callbackname" class="popup-form__ico popup-form__ico--name"></label>
+          </div>
+        </div>
+        <div class="popup-form__line" data-validate="">
+          <label for="callbackphone" class="popup-form__label">Телефон:</label>
+          <div class="popup-form__input">
+            <input type="tel" form="callback" name="callbackphone" id="callbackphone"
+                   placeholder="Пример: +7 (495) 000-00-00">
+            <label for="callbackphone" class="popup-form__ico popup-form__ico--phone"></label>
+          </div>
+        </div>
+        <div class="popup__button">
+          <button form="callback" class="button">Отправить заявку</button>
+        </div>
+        <div class="popup-form__offer">Отправляя заявку, Вы соглашаетесь на обработку персональных данных</div>
+      </div>
+    </div>
+    <div class="popup__success">Заявка успешно отправлена!</div>
+  </div>
+</div><!--
+<script>
+  (function (d, w, c) {
+    (w[c] = w[c] || []).push(function () {
+      try {
+        w.yaCounter47722900 = new Ya.Metrika({
+          id: 47722900,
+          clickmap: true,
+          trackLinks: true,
+          accurateTrackBounce: true,
+          webvisor: true
+        });
+      } catch (e) {
+      }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+      s = d.createElement("script"),
+      f = function () {
+        n.parentNode.insertBefore(s, n);
+      };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+      d.addEventListener("DOMContentLoaded", f, false);
+    } else {
+      f();
+    }
+  })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>
+  <div><img src="https://mc.yandex.ru/watch/47722900" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>-->
+</body>
+</html>

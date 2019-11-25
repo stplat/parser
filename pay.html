@@ -1,0 +1,329 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  
+
+  <link rel="stylesheet" href="style.css"/>
+  <script src="main.js"></script>
+</head>
+<body onclick="">
+<header class="header">
+  <div class="header__cap">
+    <div class="header-cap">
+      <div class="header-cap__nav">
+        <a href="" class="header-bar"><span class="header-bar__ico"><span
+                class="header-bar__inner"></span></span></a>
+        <ul class="header-nav">
+          <li class="header-nav__el">
+            <a href="/" class="header-nav__link header-nav__link--home">Главная</a>
+          </li>
+          <li class="header-nav__el">
+            <a href="" class="header-nav__link header-nav__link--cat">Каталог</a>
+            <ul class="header-nav__subnav">
+              <li class="header-nav__el">
+                <a href="" class="header-nav__link">Назад</a>
+              </li>
+              <?php foreach ($data['layout']['categories'] as $category) : ?>
+              <li class="header-nav__el">
+                <a href="" onclick="return false;"
+                   class="header-nav__link"><?php $this->htmlout($category['name']); ?></a>
+                <ul class="header-nav__subnav">
+                  <li class="header-nav__el">
+                    <a href="" class="header-nav__link">Назад</a>
+                  </li>
+                  <?php foreach ($data['layout']['categories'] as $category) : ?>
+                  <li class="header-nav__el">
+                    <a href="" onclick="return false;"
+                       class="header-nav__link"><?php $this->htmlout($category['name']); ?></a>
+                  </li>
+                  <?php endforeach; ?>
+                </ul>
+              </li>
+              <?php endforeach; ?>
+            </ul>
+          </li>
+          <li class="header-nav__el">
+            <a href="/shipping" class="header-nav__link header-nav__link--ship">Доставка</a>
+          </li>
+          <li class="header-nav__el">
+            <a href="/payment" class="header-nav__link header-nav__link--pay">Оплата</a>
+          </li>
+          <li class="header-nav__el">
+            <a href="/contacts" class="header-nav__link header-nav__link--info">Контакты</a>
+          </li>
+        </ul>
+      </div>
+      <div class="header-cap__filter">
+        <a href="" class="header-filter"><i class="header-filter__ico"></i></a>
+      </div>
+      <div class="header-cap__search">
+        <a href="" class="header-lens"><i class="header-lens__ico"></i></a>
+        <div class="header-search">
+          <div class="header-search__line"><input type="search" placeholder="Поиск товаров по названию или артикулу">
+          </div>
+          <div class="header-search__button">
+            <button></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header__mid">
+    <div class="header-mid">
+      <div class="header-mid__feedback">
+        <div class="header-phone">
+          <a href="tel:+74952039696">+7 (495) 203-96-96</a>
+        </div>
+        <ul class="header-feedback">
+          <li class="header-feedback__el">Пн-пт 10:00 - 18:00</li>
+          <li class="header-feedback__el"><a href="" class="callback">Заказать обратный звонок</a></li>
+        </ul>
+      </div>
+      <div class="header-mid__logo">
+        <a href="/" class="logo">
+          <img src="images/logo.svg" alt="Интернет-магазин ювелирных православных изделий">
+        </a>
+      </div>
+      <div class="header-mid__cart">
+        <div class="cart">
+          <div class="cart__wrapper">
+            <a href="/cart" class="cart__checkout js-cartcount">
+              Корзина&nbsp;[<span><?php echo $data['layout']['session']['cartCount']; ?></span>]</a>
+            <a href="" class="cart__preview"></a>
+            <div class="cart-dropbox">
+              <div class="cart-dropbox__quantity js-cartcount">
+                Количество: <span><?php echo $data['layout']['session']['cartCount']; ?></span>
+              </div>
+              <div class="cart-dropbox__items">
+                <div class="cart-item">
+                  <div class="cart-item__main">
+                    <div class="cart-item__name">Икона божией матери споручница грешных 08537</div>
+                    <div class="cart-item__price">1 x 1600</div>
+                  </div>
+                  <div class="cart-item__rside">
+                    <div class="cart-item__image">
+                      <img src="images/items/item83511540324882.png" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cart-dropbox__total">
+                <span>Итого:</span>
+                <span class="js-carttotal"><?php echo $data['layout']['session']['cartTotal']; ?></span>
+              </div>
+              <div class="cart-dropbox__button">
+                <a href="/cart" class="button">Оформить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="header__menu">
+    <ul class="menu">
+      <?php foreach ($data['layout']['categories'] as $category) : ?>
+      <li class="menu__el">
+        <a href="" onclick="return false;" class="menu__link"><?php $this->htmlout($category['name']); ?></a>
+        <ul class="menu-submenu">
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик серебрянный</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик православный</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+        </ul>
+      </li>
+      <?php endforeach; ?>
+    </ul>
+  </nav>
+</header>
+<section class="main">
+  <ul class="breadcrumbs">
+  <li class="breadcrumbs__list"><a href="/" class="breadcrumbs__link">Главная</a></li>
+  <li class="breadcrumbs__list">Доставка</li>
+</ul>
+<div class="info">
+  <div class="info__title">
+    <div class="title"><h1>Оплата</h1></div>
+  </div>
+  <div class="info__content">
+    <div class="info__box">
+      <p class="info__box-text">
+        В данном разделе Вы можете ознакомиться со способами оплаты понравившихся Вам православных изделий.
+      <p class="info__box-text">
+        Подробнее о способах доставки Вы можете ознакомиться в разделе –
+        <a href="/shipping" class="info__box-link info__box-link--orange">«Доставка»</a>.
+      </p>
+    </div>
+    <div class="info__box">
+      <div class="info__box-title">Наличный расчет:</div>
+      <p class="info__box-text">
+        Наличный расчет осуществляется после выбора следующего способа доставки при оформлении заказа: «Курьерская
+        доставка» или «Самовывоз». После оплаты заказа Вам выдается товарно-кассовый чек, подтверждающий факт оплаты
+        православного изделия.
+        Мы будем благодарны, если Вы заранее приготовите необходимую для оплаты заказа сумму!
+      </p>
+    </div>
+    <div class="info__box">
+      <div class="info__box-title">Безналичный расчет (онлайн-оплата):</div>
+      <p class="info__box-text">
+        Безналичный расчет предполагает автоматическую онлайн-покупку понравившихся Вам изделий при помощи банковской
+        карты или иного доступного способа безналичного расчета (например, с интернет-кошелька). Для этого необходимо
+        выбрать соответствующий способ оплаты при оформления заказа.
+        После завершения оформления заказа Вы будете перенаправлены на защищенную страницу безналичной оплаты. Далее,
+        после выбора удобного способа оплаты и ввода реквизитов, будет произведено списание денежных средств.
+        Для получения электронного чека, подтверждающего проведение операции, при заполнении реквизитов необходимо
+        указать адрес электронной почты.
+        После обработки заказа, на Вашу электронную почту будет отправлен товарно-кассовый чек, подтверждающий факт
+        оплаты православного изделия.
+        Данный способ оплаты осуществляется при помощи сервиса Яндекс.Касса. Ознакомиться с деталями безопасности можно
+        здесь.
+      </p>
+    </div>
+    <div class="info__box">
+      <div class="info__box-title">Перевод на карту ПАО «Сбербанк»:</div>
+      <p class="info__box-text">
+        Данный способ оплаты используется приемущественно для изготовление изделия на заказ.
+        Учитывая тот факт, что изделия мастерских - это продукт ручной работы, понравившиеся Вам изделия могут
+        отсутствовать в наличии и изготавливаться на заказ.
+        Изготовление православного изделия на заказ осуществляется после 100% авансового платежа (предоплаты).
+        Детали по использованию данного способа оплаты уточняйте у менеджера.
+      </p>
+    </div>
+  </div>
+</div>
+</section>
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer-top">
+      <div class="footer-top__logo">
+        <a href="" class="logo">
+          <img src="/webroot/custom/images/logo-white.svg" alt="Интернет-магазин православных изделий">
+        </a>
+        <div class="footer-top__props">ИП: Никитин Б.В.<br>ОГРНИП: 313774628200454</div>
+      </div>
+      <div class="footer-top__nav">
+        <div class="footer-nav">
+          <a href="" class="footer-nav__link">Главная</a>
+          <a href="" class="footer-nav__link">Доставка</a>
+          <a href="" class="footer-nav__link">Оплата</a>
+          <a href="" class="footer-nav__link">Контакты</a>
+          <a href="" class="footer-nav__link">Корзина</a>
+        </div>
+      </div>
+      <div class="footer-top__menu">
+        <div class="footer-nav">
+          <?php foreach ($data['layout']['categories'] as $category) : ?>
+          <a href="/catalog?category=<?php $this->htmlout($category['id']); ?>"
+             class="footer-nav__link"><?php $this->htmlout($category['name']); ?></a>
+          <?php endforeach; ?>
+        </div>
+      </div>
+      <div class="footer-top__feedback">
+        <div class="footer__phone"><a href="tel:+74952039696">+7 (495) 203-96-96</a></div>
+        <div class="footer__text">
+          <p>Приём заказов по телефону:<br/>
+            пн-пт c 10:00 до 19:00 (МСК)
+          <p>Заказы через интернет – круглосуточно
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__copyright">
+    <div class="footer-copyright">Интернет-магазин ювелирных изделий vecheria.ru. All rights reserved ©2018г.</div>
+  </div>
+</footer>
+<div class="popup js-callback">
+  <div class="popup__container">
+    <div class="popup__header">
+      <div class="popup-header">
+        <div class="popup-header__title">Заявка на обратный звонок</div>
+        <div class="popup-header__close">
+          <a href="" class="popup-close">
+            <span class="popup-close__inner"></span>
+          </a>
+        </div>
+        <p class="popup-header__text">
+          Оставьте свои контактные данные и мы свяжемся с Вами в самое ближайшее время!
+        </p>
+      </div>
+    </div>
+    <div class="popup__body">
+      <div class="popup-form">
+        <form id="callback"></form>
+        <div class="popup-form__line" data-validate="">
+          <label for="callbackname" class="popup-form__label">Имя:</label>
+          <div class="popup-form__input">
+            <input form="callback" name="callbackname" id="callbackname" placeholder="Иванов Иван Иванович">
+            <label for="callbackname" class="popup-form__ico popup-form__ico--name"></label>
+          </div>
+        </div>
+        <div class="popup-form__line" data-validate="">
+          <label for="callbackphone" class="popup-form__label">Телефон:</label>
+          <div class="popup-form__input">
+            <input type="tel" form="callback" name="callbackphone" id="callbackphone"
+                   placeholder="Пример: +7 (495) 000-00-00">
+            <label for="callbackphone" class="popup-form__ico popup-form__ico--phone"></label>
+          </div>
+        </div>
+        <div class="popup__button">
+          <button form="callback" class="button">Отправить заявку</button>
+        </div>
+        <div class="popup-form__offer">Отправляя заявку, Вы соглашаетесь на обработку персональных данных</div>
+      </div>
+    </div>
+    <div class="popup__success">Заявка успешно отправлена!</div>
+  </div>
+</div><!--
+<script>
+  (function (d, w, c) {
+    (w[c] = w[c] || []).push(function () {
+      try {
+        w.yaCounter47722900 = new Ya.Metrika({
+          id: 47722900,
+          clickmap: true,
+          trackLinks: true,
+          accurateTrackBounce: true,
+          webvisor: true
+        });
+      } catch (e) {
+      }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+      s = d.createElement("script"),
+      f = function () {
+        n.parentNode.insertBefore(s, n);
+      };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+      d.addEventListener("DOMContentLoaded", f, false);
+    } else {
+      f();
+    }
+  })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>
+  <div><img src="https://mc.yandex.ru/watch/47722900" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>-->
+</body>
+</html>

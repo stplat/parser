@@ -1,0 +1,534 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  
+
+  <link rel="stylesheet" href="style.css"/>
+  <script src="main.js"></script>
+</head>
+<body onclick="">
+<header class="header">
+  <div class="header__cap">
+    <div class="header-cap">
+      <div class="header-cap__nav">
+        <a href="" class="header-bar"><span class="header-bar__ico"><span
+                class="header-bar__inner"></span></span></a>
+        <ul class="header-nav">
+          <li class="header-nav__el">
+            <a href="/" class="header-nav__link header-nav__link--home">Главная</a>
+          </li>
+          <li class="header-nav__el">
+            <a href="" class="header-nav__link header-nav__link--cat">Каталог</a>
+            <ul class="header-nav__subnav">
+              <li class="header-nav__el">
+                <a href="" class="header-nav__link">Назад</a>
+              </li>
+              <?php foreach ($data['layout']['categories'] as $category) : ?>
+              <li class="header-nav__el">
+                <a href="" onclick="return false;"
+                   class="header-nav__link"><?php $this->htmlout($category['name']); ?></a>
+                <ul class="header-nav__subnav">
+                  <li class="header-nav__el">
+                    <a href="" class="header-nav__link">Назад</a>
+                  </li>
+                  <?php foreach ($data['layout']['categories'] as $category) : ?>
+                  <li class="header-nav__el">
+                    <a href="" onclick="return false;"
+                       class="header-nav__link"><?php $this->htmlout($category['name']); ?></a>
+                  </li>
+                  <?php endforeach; ?>
+                </ul>
+              </li>
+              <?php endforeach; ?>
+            </ul>
+          </li>
+          <li class="header-nav__el">
+            <a href="/shipping" class="header-nav__link header-nav__link--ship">Доставка</a>
+          </li>
+          <li class="header-nav__el">
+            <a href="/payment" class="header-nav__link header-nav__link--pay">Оплата</a>
+          </li>
+          <li class="header-nav__el">
+            <a href="/contacts" class="header-nav__link header-nav__link--info">Контакты</a>
+          </li>
+        </ul>
+      </div>
+      <div class="header-cap__filter">
+        <a href="" class="header-filter"><i class="header-filter__ico"></i></a>
+      </div>
+      <div class="header-cap__search">
+        <a href="" class="header-lens"><i class="header-lens__ico"></i></a>
+        <div class="header-search">
+          <div class="header-search__line"><input type="search" placeholder="Поиск товаров по названию или артикулу">
+          </div>
+          <div class="header-search__button">
+            <button></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="header__mid">
+    <div class="header-mid">
+      <div class="header-mid__feedback">
+        <div class="header-phone">
+          <a href="tel:+74952039696">+7 (495) 203-96-96</a>
+        </div>
+        <ul class="header-feedback">
+          <li class="header-feedback__el">Пн-пт 10:00 - 18:00</li>
+          <li class="header-feedback__el"><a href="" class="callback">Заказать обратный звонок</a></li>
+        </ul>
+      </div>
+      <div class="header-mid__logo">
+        <a href="/" class="logo">
+          <img src="images/logo.svg" alt="Интернет-магазин ювелирных православных изделий">
+        </a>
+      </div>
+      <div class="header-mid__cart">
+        <div class="cart">
+          <div class="cart__wrapper">
+            <a href="/cart" class="cart__checkout js-cartcount">
+              Корзина&nbsp;[<span><?php echo $data['layout']['session']['cartCount']; ?></span>]</a>
+            <a href="" class="cart__preview"></a>
+            <div class="cart-dropbox">
+              <div class="cart-dropbox__quantity js-cartcount">
+                Количество: <span><?php echo $data['layout']['session']['cartCount']; ?></span>
+              </div>
+              <div class="cart-dropbox__items">
+                <div class="cart-item">
+                  <div class="cart-item__main">
+                    <div class="cart-item__name">Икона божией матери споручница грешных 08537</div>
+                    <div class="cart-item__price">1 x 1600</div>
+                  </div>
+                  <div class="cart-item__rside">
+                    <div class="cart-item__image">
+                      <img src="images/items/item83511540324882.png" alt="">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="cart-dropbox__total">
+                <span>Итого:</span>
+                <span class="js-carttotal"><?php echo $data['layout']['session']['cartTotal']; ?></span>
+              </div>
+              <div class="cart-dropbox__button">
+                <a href="/cart" class="button">Оформить</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="header__menu">
+    <ul class="menu">
+      <?php foreach ($data['layout']['categories'] as $category) : ?>
+      <li class="menu__el">
+        <a href="" onclick="return false;" class="menu__link"><?php $this->htmlout($category['name']); ?></a>
+        <ul class="menu-submenu">
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик серебрянный</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик православный</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+          <li class="menu-submenu__el">
+            <a href="" class="menu-submenu__link">Крестик голгофский с распятием</a>
+          </li>
+        </ul>
+      </li>
+      <?php endforeach; ?>
+    </ul>
+  </nav>
+</header>
+<section class="main">
+  <ul class="breadcrumbs">
+  <li class="breadcrumbs__list"><a href="/" class="breadcrumbs__link">Главная</a></li>
+  <li class="breadcrumbs__list"><a href="/catalog" class="breadcrumbs__link">Каталог</a></li>
+  <li class="breadcrumbs__list"><?php $this->htmlout($data['item']['item']['itemname']); ?></li>
+</ul>
+<div class="product js-product" data-id="<?php $this->htmlout($data['item']['item']['itemid']); ?>">
+  <div class="product__wrapper">
+    <div class="product__content">
+      <div class="product__title">
+        <h1><?php $this->htmlout($data['item']['item']['itemname']); ?></h1>
+      </div>
+      <div class="product__article"><?php $this->htmlout($data['item']['item']['itemarticle']); ?></div>
+      <div class="product__image js-image">
+        <img src="/custom/images/items/<?php $this->htmlout($data['item']['item']['images'][0]['name']); ?>" alt="">
+      </div>
+      <ul class="product__preview js-preview">
+        <?php foreach ($data['item']['item']['images'] as $image) : ?>
+          <li class="product__preview-item">
+            <a href="" class="product__preview-link">
+              <img src="/custom/images/items/<?php $this->htmlout($image['name']); ?>" alt="">
+            </a>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+    <div class="product__aside">
+      <div class="product__price"><?php $this->htmlout($data['item']['item']['itemprice']); ?></div>
+      <?php if (!isset($data['item']['item']['sizes'])) : ?>
+        <div class="product__box">
+          <div class="product__box-title">Выберите размер:</div>
+          <?php foreach ($data['item']['item']['sizes'] as $size) : ?>
+            <div class="product__box-content">
+              <a href="" class="product__box-item"
+                 data-id="<?php $this->htmlout($size['id']); ?>"><?php $this->htmlout($size['name']); ?></a>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      <?php endif; ?>
+      <div class="product__button">
+        <a href="" class="button button--red js-addtocart">В корзину</a>
+        <a href="" class="product__button-link">Быстрая покупка</a>
+      </div>
+      <div class="product__box">
+        <div class="product__holy">Изделие освящено</div>
+      </div>
+      <div class="product__box">
+        <ul class="product__box-params">
+          <li class="product__box-param">
+            <span class="product__box-param-key">Производитель:</span>
+            <span class="product__box-param-value"><?php $this->htmlout($data['item']['item']['manufacturername']); ?></span>
+          </li>
+          <li class="product__box-param">
+            <span class="product__box-param-key">Материалы:</span>
+            <span class="product__box-param-value">
+              <?php foreach ($data['item']['item']['materials'] as $material) : ?>
+                <span class="product__box-param-value--few"><?php $this->htmlout($material['name']); ?></span>
+              <?php endforeach; ?>
+            </span>
+          </li>
+          <li class="product__box-param">
+            <span class="product__box-param-key">Техника:</span>
+            <span class="product__box-param-value">
+            <?php foreach ($data['item']['item']['technics'] as $technic) : ?>
+              <span class="product__box-param-value--few"><?php $this->htmlout($technic['name']); ?></span>
+            <?php endforeach; ?>
+            </span>
+          </li>
+          <?php if (!empty($data['item']['item']['itemdimensions'])) : ?>
+            <li class="product__box-param">
+              <span class="product__box-param-key">Габариты:</span>
+              <span class="product__box-param-value"><?php $this->htmlout($data['item']['item']['itemdimensions']); ?></span>
+            </li>
+          <?php endif; ?>
+          <?php if (!empty($data['item']['item']['itemweight'])) : ?>
+            <li class="product__box-param">
+              <span class="product__box-param-key">Вес:</span>
+              <span class="product__box-param-value"><?php $this->htmlout($data['item']['item']['itemweight']); ?>
+                г</span>
+            </li>
+          <?php endif; ?>
+          <li class="product__box-param">
+            <span class="product__box-param-key">Пол:</span>
+            <span class="product__box-param-value"><?php $this->htmlout($data['item']['item']['itemgender']); ?></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <?php if (!empty($data['item']['item']['itemdescription'])) : ?>
+    <div class="product__desc">
+      <div class="product__desc-tabs">
+        <a href="" class="product__desc-tab is-active" data-tab="desc">Описание</a>
+        <a href="" class="product__desc-tab product__desc-tab--abs" data-tab="spec">Акции</a>
+      </div>
+      <!--noindex-->
+      <div class="product__desc-content" id="desc"><?php $this->htmlout($data['item']['item']['itemdescription']); ?>
+        <!--/noindex-->
+      </div>
+    </div>
+  <?php endif; ?>
+</div>
+
+
+
+<!--<div class="width-page">
+  <div class="width-page__aside">
+
+  </div>
+  <div class="width-page__front">
+    <div class="common-box">
+      <ul class="breadcrumbs">
+        <li class="list"><a href="/" class="link">Главная</a></li>
+        <li class="list"><a href="/catalog" class="link">Каталог</a></li>
+        <li class="list"><span><?php $this->htmlout($data['item']['item']['itemname']); ?></span></li>
+      </ul>
+    </div>
+    <div class="common-box product-page" onclick="product.router(event)" data-id="<?php $this->htmlout($data['item']['item']['itemid']); ?>" data-sizes="">
+      <div class="aside">
+        <div class="image-wrapper">
+          <div class="image">
+            <img src="/custom/images/items/<?php $this->htmlout($data['item']['item']['images'][0]['name']); ?>" data-item-images="medium"/>
+          </div>
+          <div class="buyoneclick"><span class="tooltip">Купить в один клик</span></div>
+          <div class="popup" data-popup="buyoneclick_<?php $this->htmlout($data['item']['item']['itemid']); ?>" onclick="popup.close(event)">
+            <div class="popup-window">
+              <div class="popup-header">
+                <div class="popup-title popup-title-orange">Быстрая покупка</div>
+                <span class="popup-close"></span>
+              </div>
+              <div class="popup-content">
+                <form method="POST" name="buyoneclick" onsubmit="product.buyoneclick(event)">
+                  <div class="popup-field">
+                    <span>Оставьте Ваш телефон и мы свяжемся с Вами для уточнения деталей данного товара!</span> <span class="alert">Необходимо указать контактный телефон!</span>
+                  </div>
+                  <div class="popup-field">
+                    <label for="buyoneclick_<?php $this->htmlout($data['item']['item']['itemid']); ?>" class="phone">Ваш телефон:</label> <input type="tel" id="buyoneclick_<?php $this->htmlout($data['item']['item']['itemid']); ?>" name="phone" pattern="(^(\+7|7|8)([0-9]){10}$)|(^([0-9]){7}$)">
+                  </div>
+                  <div class="popup-field">
+                    <button class="button">Заказать звонок</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="zoom" onclick="photo.zoom(event)">
+            <img src="/webroot/custom/images/zoom.png" alt="" class="zoom-ico">
+          </div>
+          <div class="popup" data-popup="largeimg" onclick="popup.close(event)">
+            <div class="popup-window">
+              <div class="popup-header">
+                <div class="popup-title popup-title-orange"><?php $this->htmlout($data['item']['item']['itemname']); ?></div>
+                <span class="popup-close"></span>
+              </div>
+              <div class="popup-content">
+                <img src="/webroot/custom/images/items/<?php $this->htmlout($data['item']['item']['images'][0]['name']); ?>" data-item-images="large"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="preview">
+          <?php foreach ($data['item']['item']['images'] as $image) : ?>
+            <div class="item">
+              <img src="/custom/images/items/<?php $this->htmlout($image['name']); ?>" data-item-images="small" onclick="photo.preview(event)"/>
+            </div>
+          <?php endforeach; ?>
+        </div>
+      </div>
+      <div class="front">
+        <div class="common-box__title-box">
+          <div class="text">
+            <h2><?php $this->htmlout($data['item']['item']['itemname']); ?></h2>
+          </div>
+        </div>
+        <div class="available"><?php $this->htmlout($data['item']['item']['itemavailability']); ?></div>
+        <div class="article">Артикул: <?php $this->htmlout($data['item']['item']['itemarticle']); ?></div>
+        <div class="price" data-replace="price"><?php $this->htmlout($data['item']['item']['itemprice']); ?></div>
+        <!--<div class="shipping"><i class="fa fa-car" aria-hidden="true"></i> доставка: бесплатно по Москве</div>
+        <div class="addtocart">
+          <span class="alert">Необходимо выбрать размер!</span>
+          <div class="quantity">
+            <label for="quantity">Количество :</label> <input type="text" id="quantity" name="quantity" value="1">
+            <button class="button">Добавить в корзину</button>
+          </div>
+          <div class="size<?php if (!empty($data['item']['item']['sizes'])): ?><?php else: ?> hidden<?php endif; ?>" data-sizes="<?php if (!empty($data['item']['item']['sizes'])): ?>true<?php else: ?>false<?php endif; ?>">
+            <span class="desc">Выберите размер :</span>
+            <?php if (isset($data['item']['item']['sizes'])) : ?>
+              <div class="custom-select">
+                <input type="text" id="product-size" name="product-size" value="" data-id="" disabled>
+                <div class="select-options">
+                  <?php foreach ($data['item']['item']['sizes'] as $size) : ?>
+                    <button data-id="<?php $this->htmlout($size['id']); ?>" data-selected=""><?php $this->htmlout($size['name']); ?></button>
+                  <?php endforeach; ?>
+                </div>
+              </div>
+            <?php endif; ?>
+          </div>
+        </div>
+        <div class="description">
+          <p class="param">
+            <span class="key">Материалы :</span> <span class="value">
+								<?php foreach ($data['item']['item']['materials'] as $material) : ?>
+                  <span class="few-values"><?php $this->htmlout($material['name']); ?></span>
+                <?php endforeach; ?>
+							</span>
+          </p>
+          <p class="param">
+            <span class="key">Техники изготовления :</span> <span class="value">
+								<?php foreach ($data['item']['item']['technics'] as $technic) : ?>
+                  <span class="few-values"><?php $this->htmlout($technic['name']); ?></span>
+                <?php endforeach; ?>
+							</span>
+          </p>
+          <p class="param">
+            <span class="key">Производитель  :</span> <span class="value">
+								<?php $this->htmlout($data['item']['item']['manufacturername']); ?>
+							</span>
+          </p>
+          <?php if (!empty($data['item']['item']['collection'])) : ?>
+            <p class="param">
+              <span class="key">Коллекция :</span> <span class="value">
+									<?php $this->htmlout($data['item']['item']['collection']['name']); ?>
+								</span>
+            </p>
+          <?php endif; ?>
+          <?php if (!empty($data['item']['item']['itemdimensions'])) : ?>
+          <p class="param">
+            <span class="key">Габариты  :</span> <span class="value">
+								<?php $this->htmlout($data['item']['item']['itemdimensions']); ?>
+							</span>
+          </p>
+          <?php endif; ?>
+          <?php if (!empty($data['item']['item']['itemweight'])) : ?>
+          <p class="param">
+            <span class="key">Вес  :</span> <span class="value">
+								<?php $this->htmlout($data['item']['item']['itemweight']); ?> г
+							</span>
+          </p>
+          <?php endif; ?>
+          <p class="param">
+            <span class="key">Пол  :</span> <span class="value">
+								<?php $this->htmlout($data['item']['item']['itemgender']); ?>
+							</span>
+          </p>
+          <?php if (!empty($data['item']['item']['itemdescription'])) : ?>
+            <p class="param">
+              <span class="key">Описание товара :</span>
+              <span class="value">
+                <?php $this->htmlout($data['item']['item']['itemdescription']); ?>
+              </span>
+            </p>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>-->
+<?php include VIEWS_PATH . DS . 'includes' . DS . 'latestitems.html.php'; ?>
+
+</section>
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer-top">
+      <div class="footer-top__logo">
+        <a href="" class="logo">
+          <img src="/webroot/custom/images/logo-white.svg" alt="Интернет-магазин православных изделий">
+        </a>
+        <div class="footer-top__props">ИП: Никитин Б.В.<br>ОГРНИП: 313774628200454</div>
+      </div>
+      <div class="footer-top__nav">
+        <div class="footer-nav">
+          <a href="" class="footer-nav__link">Главная</a>
+          <a href="" class="footer-nav__link">Доставка</a>
+          <a href="" class="footer-nav__link">Оплата</a>
+          <a href="" class="footer-nav__link">Контакты</a>
+          <a href="" class="footer-nav__link">Корзина</a>
+        </div>
+      </div>
+      <div class="footer-top__menu">
+        <div class="footer-nav">
+          <?php foreach ($data['layout']['categories'] as $category) : ?>
+          <a href="/catalog?category=<?php $this->htmlout($category['id']); ?>"
+             class="footer-nav__link"><?php $this->htmlout($category['name']); ?></a>
+          <?php endforeach; ?>
+        </div>
+      </div>
+      <div class="footer-top__feedback">
+        <div class="footer__phone"><a href="tel:+74952039696">+7 (495) 203-96-96</a></div>
+        <div class="footer__text">
+          <p>Приём заказов по телефону:<br/>
+            пн-пт c 10:00 до 19:00 (МСК)
+          <p>Заказы через интернет – круглосуточно
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__copyright">
+    <div class="footer-copyright">Интернет-магазин ювелирных изделий vecheria.ru. All rights reserved ©2018г.</div>
+  </div>
+</footer>
+<div class="popup js-callback">
+  <div class="popup__container">
+    <div class="popup__header">
+      <div class="popup-header">
+        <div class="popup-header__title">Заявка на обратный звонок</div>
+        <div class="popup-header__close">
+          <a href="" class="popup-close">
+            <span class="popup-close__inner"></span>
+          </a>
+        </div>
+        <p class="popup-header__text">
+          Оставьте свои контактные данные и мы свяжемся с Вами в самое ближайшее время!
+        </p>
+      </div>
+    </div>
+    <div class="popup__body">
+      <div class="popup-form">
+        <form id="callback"></form>
+        <div class="popup-form__line" data-validate="">
+          <label for="callbackname" class="popup-form__label">Имя:</label>
+          <div class="popup-form__input">
+            <input form="callback" name="callbackname" id="callbackname" placeholder="Иванов Иван Иванович">
+            <label for="callbackname" class="popup-form__ico popup-form__ico--name"></label>
+          </div>
+        </div>
+        <div class="popup-form__line" data-validate="">
+          <label for="callbackphone" class="popup-form__label">Телефон:</label>
+          <div class="popup-form__input">
+            <input type="tel" form="callback" name="callbackphone" id="callbackphone"
+                   placeholder="Пример: +7 (495) 000-00-00">
+            <label for="callbackphone" class="popup-form__ico popup-form__ico--phone"></label>
+          </div>
+        </div>
+        <div class="popup__button">
+          <button form="callback" class="button">Отправить заявку</button>
+        </div>
+        <div class="popup-form__offer">Отправляя заявку, Вы соглашаетесь на обработку персональных данных</div>
+      </div>
+    </div>
+    <div class="popup__success">Заявка успешно отправлена!</div>
+  </div>
+</div><!--
+<script>
+  (function (d, w, c) {
+    (w[c] = w[c] || []).push(function () {
+      try {
+        w.yaCounter47722900 = new Ya.Metrika({
+          id: 47722900,
+          clickmap: true,
+          trackLinks: true,
+          accurateTrackBounce: true,
+          webvisor: true
+        });
+      } catch (e) {
+      }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+      s = d.createElement("script"),
+      f = function () {
+        n.parentNode.insertBefore(s, n);
+      };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+      d.addEventListener("DOMContentLoaded", f, false);
+    } else {
+      f();
+    }
+  })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>
+  <div><img src="https://mc.yandex.ru/watch/47722900" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>-->
+</body>
+</html>
