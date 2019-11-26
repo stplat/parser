@@ -34,7 +34,7 @@ function translit($str) {
 // html_entity_decode($link_category->href) === 'http://magazintroica.ru/chistyashhie-sredstva-dlya-serebra/' http://magazintroica.ru/kresty/kresty_bolshogo_razmera/
 
 
-/*if (!empty($links_category)) {
+if (!empty($links_category)) {
   foreach ($links_category as $number => $link_category) {
     $start = microtime(true);
 
@@ -132,6 +132,7 @@ function translit($str) {
             }
 
             $image_name = str_replace('&nbsp;', ' ', $name);
+            $image_name = mb_strtolower($image_name . '_' . str_replace(' ', '_', html_entity_decode(trim(translit($page_item->find('[itemprop="model"]', 0)->plaintext)))));
             $image_name = preg_replace('/-/', '', $image_name);
             $image_name = preg_replace('/^ /', '', $image_name);
             $image_name = preg_replace('/«/', '', $image_name);
@@ -148,12 +149,14 @@ function translit($str) {
             $image_name = preg_replace('/№/', '', $image_name);
             $image_name = str_replace(' ', '_', translit($image_name));
             $image_name = preg_replace('/_$/', '', $image_name);
-            $image_name = mb_strtolower($image_name . '_' . str_replace(' ', '_', $article) . '.jpg');
+
 
             $links_image = $page_item->find('[data-zoom-image]');
             $urls = [];
+            $images_urls = [];
 
             foreach ($links_image as $j => $link_image) {
+              echo $url_image . '</br>';
               $url_image = (string)$link_image->attr['data-zoom-image'];
               $url_image = str_replace('cache/', '', $url_image);
               $url_image = str_replace('-1200x800', '', $url_image);
@@ -165,7 +168,10 @@ function translit($str) {
 
             foreach ($urls as $j => $url) {
               $path = html_entity_decode(__DIR__ . '/items/' . $image_name . ($j !== 0 ? '_' . ($j + 1) : '') . '.jpg');
+              $image_file_name = $image_name . ($j !== 0 ? '_' . ($j + 1) : '') . '.jpg';
               file_put_contents($path, file_get_contents($url));
+
+              array_push($images_urls, $image_file_name);
             }
 
             $sheet->setCellValue('A' . (2 + $i), $name);
@@ -177,7 +183,7 @@ function translit($str) {
             $sheet->setCellValue('G' . (2 + $i), implode($material, ', '));
             $sheet->setCellValue('H' . (2 + $i), implode($technic, ', '));
             $sheet->setCellValue('I' . (2 + $i), implode($desc, ' '));
-            $sheet->setCellValue('J' . (2 + $i), $image_name);
+            $sheet->setCellValue('J' . (2 + $i), implode($images_urls, ';'));
             $sheet->setCellValue('K' . (2 + $i), $category);
             $sheet->setCellValue('L' . (2 + $i), $link_category);
             $sheet->setCellValue('M' . (2 + $i), $other);
@@ -197,9 +203,9 @@ function translit($str) {
     $minute = floor($delta / 60);
     $second = abs(floor($delta / 60) * 60 - $delta);
 
-    //echo $number + 1 . '. Success - ' . $link_category . '! Execution time:' . $minute . ' min ' . $second . ' sec</br>' . PHP_EOL;
+    echo $number + 1 . '. Success - ' . $link_category . '! Execution time:' . $minute . ' min ' . $second . ' sec</br>' . PHP_EOL;
   }
-}*/
+}
 
 
 $finish = microtime(true);
