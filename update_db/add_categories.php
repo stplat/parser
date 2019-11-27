@@ -33,7 +33,7 @@ foreach ($data as $key => $row) {
 
 $query = preg_replace('/, $/', '', $query);
 
-//$result = $connect->query($query);
+$result = $connect->query($query);
 
 
 

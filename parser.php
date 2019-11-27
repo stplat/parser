@@ -156,7 +156,6 @@ if (!empty($links_category)) {
             $images_urls = [];
 
             foreach ($links_image as $j => $link_image) {
-              echo $url_image . '</br>';
               $url_image = (string)$link_image->attr['data-zoom-image'];
               $url_image = str_replace('cache/', '', $url_image);
               $url_image = str_replace('-1200x800', '', $url_image);
@@ -187,6 +186,7 @@ if (!empty($links_category)) {
             $sheet->setCellValue('K' . (2 + $i), $category);
             $sheet->setCellValue('L' . (2 + $i), $link_category);
             $sheet->setCellValue('M' . (2 + $i), $other);
+            $sheet->setCellValue('N' . (2 + $i), $image_name);
           }
         }
       }

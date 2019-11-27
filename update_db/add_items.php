@@ -16,7 +16,7 @@ $excel = PHPExcel_IOFactory::load('items.xlsx');
 $maxCell = $excel->getActiveSheet()->getHighestRowAndColumn();
 $data = $excel->getActiveSheet()->rangeToArray('A1:' . $maxCell['column'] . $maxCell['row']);
 
-$query = "INSERT INTO `items` (`id`, `subcategory_id`, `name`, `plug`, `manufactured`, `article`, `available`, `weight`, `price`, `material`, `technic`, `description`, `image_path`, `created_at`, `updated_at`) VALUES ";
+$query = "INSERT INTO `items` (`id`, `subcategory_id`, `name`, `plug`, `manufacturer`, `article`, `meta_keywords`, `meta_description`, `meta_title`, `available`, `weight`, `price`, `material`, `technic`, `description`, `image_path`, `created_at`, `updated_at`) VALUES ";
 
 
 foreach ($data as $key => $row) {
