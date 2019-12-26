@@ -5,7 +5,7 @@ require_once '../Classes/PHPExcel/Writer/Excel2007.php';
 require_once '../Classes/PHPExcel/IOFactory.php';
 
 //Подключаемся к БД Хост, Имя пользователя MySQL, его пароль, имя нашей базы
-$connect = new mysqli("localhost", "root", "", "srv67580_vech_lar");
+$connect = new mysqli("localhost", "root", "", "vecheria_laravel");
 
 //Кодировка данных получаемых из базы
 $connect->query("SET NAMES 'utf8' ");
