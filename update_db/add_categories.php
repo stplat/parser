@@ -21,7 +21,7 @@ $query = "INSERT INTO `categories` (`id`, `category`, `subcategory`, `plug`, `av
 
 foreach ($data as $key => $row) {
   if ($key != 0) {
-    $query .= "(NULL, ";
+    $query .= "(";
 
     foreach ($row as $i => $col) {
       $query .= "'" . $col . "', ";
@@ -32,6 +32,7 @@ foreach ($data as $key => $row) {
 }
 
 $query = preg_replace('/, $/', '', $query);
+echo $query;
 
 $result = $connect->query($query);
 
