@@ -1,5 +1,7 @@
 <?php
 
+// PHP 5.6 и Apache 2 под PHP 5.6
+
 $start = microtime(true);
 
 header('Content-Type: text/html; charset=utf-8');
@@ -131,7 +133,8 @@ if (!empty($links_category)) {
               }
             }
 
-            $image_name = str_replace('&nbsp;', ' ', $name);
+            $image_name = substr($name, 0, 70);
+            $image_name = str_replace('&nbsp;', ' ', $image_name);
             $image_name = mb_strtolower($image_name . '_' . str_replace(' ', '_', html_entity_decode(trim(translit($page_item->find('[itemprop="model"]', 0)->plaintext)))));
             $image_name = preg_replace('/-/', '', $image_name);
             $image_name = preg_replace('/^ /', '', $image_name);
