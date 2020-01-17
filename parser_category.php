@@ -11,14 +11,14 @@ global $parse_category;
 $parse_category = [
   //'http://magazintroica.ru/specialnoe-predlozhenie/',
   //'http://magazintroica.ru/novinki/',
-  /*'http://magazintroica.ru/pravoslavnye-businy/',
+  'http://magazintroica.ru/pravoslavnye-businy/',
   'http://magazintroica.ru/pravoslavnye-businy/braslety-iz-busin/',
   'http://magazintroica.ru/pravoslavnye-businy/tri-businy-i-braslet-v-podarok/',
   'http://magazintroica.ru/pravoslavnye-businy/braslety-dlya-busin/',
   'http://magazintroica.ru/pravoslavnye-businy/nabory-s-businami/',
-  'http://magazintroica.ru/pravoslavnye-businy/sergi-perexodniki-pod-businy/',*/
+  'http://magazintroica.ru/pravoslavnye-businy/sergi-perexodniki-pod-businy/',
   'http://magazintroica.ru/kresty/',
-  /*'http://magazintroica.ru/kresty/kresty_bolshogo_razmera/',
+  'http://magazintroica.ru/kresty/kresty_bolshogo_razmera/',
   'http://magazintroica.ru/kresty/kresty_srednego_razmera/',
   'http://magazintroica.ru/kresty/krestilnye_krestiki/',
   'http://magazintroica.ru/kresty/kresty_so_vstavkami/',
@@ -109,5 +109,5 @@ $parse_category = [
   'http://magazintroica.ru/svechi-dekorativnye/svechi-pasxalnye/',
   'http://magazintroica.ru/svechi-dekorativnye/svechi-rozhdestvenskie/',
   'http://magazintroica.ru/suveniry/',
-  'http://magazintroica.ru/chistyashhie-sredstva-dlya-serebra/'*/
+  'http://magazintroica.ru/chistyashhie-sredstva-dlya-serebra/'
 ];

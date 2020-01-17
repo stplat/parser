@@ -133,8 +133,7 @@ if (!empty($links_category)) {
               }
             }
 
-            $image_name = substr($name, 0, 70);
-            $image_name = str_replace('&nbsp;', ' ', $image_name);
+            $image_name = str_replace('&nbsp;', ' ', mb_strtolower($name));
             $image_name = mb_strtolower($image_name . '_' . str_replace(' ', '_', html_entity_decode(trim(translit($page_item->find('[itemprop="model"]', 0)->plaintext)))));
             $image_name = preg_replace('/-/', '', $image_name);
             $image_name = preg_replace('/^ /', '', $image_name);
@@ -153,6 +152,27 @@ if (!empty($links_category)) {
             $image_name = str_replace(' ', '_', translit($image_name));
             $image_name = preg_replace('/_$/', '', $image_name);
 
+            $code_ = (array_filter(str_split($image_name), function ($el) {
+              return $el === '_';
+            }));
+
+            if (count($code_) > 5) {
+              $pos = '';
+
+              for ($i = 0; $i < count($code_); $i++) {
+                if ($i == 4) {
+                  $pos = key($code_);
+                }
+                next($code_);
+              }
+
+              $image_name_article = mb_strtolower(str_replace('&nbsp;', '', trim($article)));
+              $image_name_article = str_replace(' ', '_', translit($image_name_article));
+
+              $image_name = substr($image_name, 0, $pos) . '_' . $image_name_article;
+            }
+
+            echo $image_name . '</br>';
 
             $links_image = $page_item->find('[data-zoom-image]');
             $urls = [];
