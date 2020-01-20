@@ -41,31 +41,31 @@ function translit($str) {
 if (!empty($links_category)) {
   foreach ($links_category as $number => $link_category) {
     $start = microtime(true);
-    
+
     if (true) {
       $xls = new PHPExcel();
       $xls = PHPExcel_IOFactory::load(__DIR__ . '/layout.xlsx');
-      
+
       $xls->setActiveSheetIndex(0);
       $sheet = $xls->getActiveSheet();
-      
+
       $objWriter = new PHPExcel_Writer_Excel2007($xls);
-      
+
       $file_name = (string)html_entity_decode($link_category);
       $first_char = strrpos($file_name, '/', -2) + 1;
       $last_char = strrpos($file_name, '/');
       $file_name = substr($file_name, $first_char, $last_char - $first_char);
-      
+
       $page_category = file_get_html(html_entity_decode($link_category) . '?limit=1000');
-      
+
       $links_item = $page_category->find('#content .product-thumb');
-      
+
       foreach ($links_item as $i => $link_item) {
         if (!empty($link_item)) {
-          
+
           if (!strpos(html_entity_decode($link_item->find('.caption > a', 0)->href), '%')) {
             $page_item = file_get_html(html_entity_decode($link_item->find('.caption > a', 0)->href));
-            
+
             $brand = '';
             $article = '';
             $available = '';
@@ -75,51 +75,51 @@ if (!empty($links_category)) {
             $other = '';
             $desc = [];
             $desc_try = '';
-            
+
             if (is_object($page_item->find('[itemprop="brand"]', 0))) {
               $brand = str_replace('&nbsp;', ' ', $page_item->find('[itemprop="brand"]', 0)->plaintext);
               $brand = html_entity_decode(trim(preg_replace('/\s+/', ' ', $brand)));
             }
-            
+
             if (is_object($page_item->find('[itemprop="model"]', 0))) {
               $article = html_entity_decode(trim(preg_replace('/\s+/', ' ', $page_item->find('[itemprop="model"]', 0)->plaintext)));
             }
-            
+
             if (is_object($page_item->find('#product > .col-md-5', 1)->find('.col-md-6', 2))) {
               $available = html_entity_decode(trim(preg_replace('/\s+/', ' ', $page_item->find('#product > .col-md-5', 1)->find('.col-md-6', 2)->plaintext)));
             }
-            
+
             if (is_object($page_item->find('#product > .col-md-5', 1)->find('.col-md-6', 3))) {
               $weight = html_entity_decode(trim(preg_replace('/\s+/', ' ', $page_item->find('#product > .col-md-5', 1)->find('.col-md-6', 3)->plaintext)));
             }
-            
+
             if (is_object($page_item->find('.autocalc-product-price', 0))) {
               $price = html_entity_decode(trim(preg_replace('/\s+/', ' ', $page_item->find('.autocalc-product-price', 0)->plaintext)));
             }
-            
+
             if (is_object($page_item->find('.breadcrumb li', 1))) {
               $category = html_entity_decode(trim(preg_replace('/\s+/', ' ', $page_item->find('.breadcrumb li', 1)->plaintext)));
             }
-            
+
             if (is_object($page_item->find('[itemprop="description"]', 0))) {
               $other = html_entity_decode(trim(preg_replace('/\s+/', ' ', $page_item->find('[itemprop="description"]', 0))));
             }
-            
+
             if (is_object($page_item->find('[itemprop="description"]', 0)->find('p'))) {
               $desc_try = $page_item->find('[itemprop="description"]', 0)->find('p');
-              
+
               for ($h = 0; $h < count($desc_try); $h++) {
                 if ($h != 0) {
                   $str = (string)$desc_try[$h]->plaintext;
                   $str = str_replace('&nbsp;', ' ', $str);
                   $str = preg_replace('/\s+/', ' ', html_entity_decode($str));
                   $str = trim(str_replace('~', '-', $str));
-                  
+
                   array_push($desc, $str);
                 }
               }
             }
-            
+
             $name = html_entity_decode(str_replace('&nbsp;', ' ', $page_item->find('span[itemprop="name"]', 0)->plaintext));
             $name = trim(preg_replace('/\s+/', ' ', $name));
             $name = (str_replace('эмаль', '', $name));
@@ -134,7 +134,7 @@ if (!empty($links_category)) {
             $name = (str_replace(', , Акимов', '', $name));
             $name = (str_replace(', , Елизавета', '', $name));
             $name = (str_replace(', , Анастасия', '', $name));
-            
+
             $material_try = [
               'серебро 925', 'позолота 999', 'каучук', 'нержавеющая сталь', 'Серебро', 'фианит', 'сербро 925',
               'Золото (585)', 'Серебро (925)', 'Позолота (999)', 'Ag 925', 'Золото красное 585', 'сербро',
@@ -142,28 +142,27 @@ if (!empty($links_category)) {
               'сталь', 'натуральный коралл', 'латунь', 'керамика', 'латунь', 'медь', 'жемчуг', 'топаз', 'дерево'
             ];
             $material = [];
-            
+
             foreach ($material_try as $str) {
               if (strpos($other, $str) !== false) {
                 array_push($material, strtolower($str));
               }
             }
-            
+
             $technic_try = [
               'Миниатюрный рельеф', 'литье', 'позолота', 'Ручная работа', 'Авторская работа', 'чернение', 'Горячая перегородчатая эмаль',
               'серебрение', 'горячая эмаль', 'биметаллическое литье', 'родирование', 'плетение', 'мелкая пластика', 'чеканка', 'гальванопластика',
               'патинирование', 'золочение'
             ];
             $technic = [];
-            
+
             foreach ($technic_try as $str) {
               if (strpos($other, $str) !== false) {
                 array_push($technic, strtolower($str));
               }
             }
-            
+
             $image_name = str_replace('&nbsp;', ' ', $name);
-            $image_name = mb_strtolower($image_name . '_' . str_replace(' ', '_', html_entity_decode(trim(translit($page_item->find('[itemprop="model"]', 0)->plaintext)))));
             $image_name = preg_replace('/-/', '', $image_name);
             $image_name = preg_replace('/^ /', '', $image_name);
             $image_name = preg_replace('/«/', '', $image_name);
@@ -180,83 +179,75 @@ if (!empty($links_category)) {
             $image_name = preg_replace('/№/', '', $image_name);
             $image_name = str_replace(' ', '_', translit($image_name));
             $image_name = preg_replace('/_$/', '', $image_name);
-            
-            $code_ = array_filter(str_split($image_name), function ($el) {
-              return $el === '_';
-            });
-            
-            if (count($code_) > 5) {
-              $pos = '';
-              
-              for ($i = 0; $i < count($code_); $i++) {
-                if ($i == 4) {
-                  $pos = key($code_);
-                }
-                next($code_);
+
+            if (strlen($image_name) > 50) {
+              $pos_ = strpos($image_name, '_', '40');
+
+              if ($pos_) {
+                $image_name = substr($image_name, 0, $pos_);
               }
-              
-              //$image_name_article = mb_strtolower(str_replace('&nbsp;', '', trim($article)));
-              //$image_name_article = str_replace(' ', '_', translit($image_name_article));
-              
-              //$image_name = substr($image_name, 0, $pos) . '_' . $image_name_article;
             }
-  
-            /* $links_image = $page_item->find('[data-zoom-image]');
-             $urls = [];
-             $images_urls = [];
-             
-             foreach ($links_image as $j => $link_image) {
-               $url_image = (string)$link_image->attr['data-zoom-image'];
-               $url_image = str_replace('cache/', '', $url_image);
-               $url_image = str_replace('-1200x800', '', $url_image);
-               
-               array_push($urls, $url_image);
-             }
-             
-             $urls = array_values(array_unique($urls));
-             
-             foreach ($urls as $j => $url) {
-               $path = html_entity_decode(__DIR__ . '/items/' . $image_name . ($j !== 0 ? '_' . ($j + 1) : '') . '.jpg');
-               $image_file_name = $image_name . ($j !== 0 ? '_' . ($j + 1) : '') . '.jpg';
-               file_put_contents($path, file_get_contents($url));
-               
-               array_push($images_urls, $image_file_name);
-             }*/
-            
+
+            $image_name_article = str_replace('/', ' ', $article);
+            $image_name_article = mb_strtolower(str_replace('&nbsp;', '', $image_name_article));
+            $image_name_article = str_replace(' ', '_', translit($image_name_article));
+
+            $image_name = $image_name . '_' . $image_name_article;
+            $image_name = str_replace('_', '-', mb_strtolower($image_name));
+
+            $links_image = $page_item->find('[data-zoom-image]');
+            $urls = [];
+            $images_urls = [];
+
+            foreach ($links_image as $j => $link_image) {
+              $url_image = (string)$link_image->attr['data-zoom-image'];
+              $url_image = str_replace('cache/', '', $url_image);
+              $url_image = str_replace('-1200x800', '', $url_image);
+
+              array_push($urls, $url_image);
+            }
+
+            $urls = array_values(array_unique($urls));
+
+            foreach ($urls as $j => $url) {
+              $path = html_entity_decode(__DIR__ . '/items/' . $image_name . ($j !== 0 ? '_' . ($j + 1) : '') . '.jpg');
+              $image_file_name = $image_name . ($j !== 0 ? '_' . ($j + 1) : '') . '.jpg';
+              file_put_contents($path, file_get_contents($url));
+
+              array_push($images_urls, $image_file_name);
+            }
+
             $sheet->setCellValue('B' . (2 + $i), $brand);
-            
-            /*$sheet->setCellValue('D' . (2 + $i), $brand);
+            $sheet->setCellValue('C' . (2 + $i), $image_name);
+            $sheet->setCellValue('D' . (2 + $i), $brand);
             $sheet->setCellValue('E' . (2 + $i), $article);
-            
+
             $sheet->setCellValue('I' . (2 + $i), $available);
             $sheet->setCellValue('J' . (2 + $i), $weight);
             $sheet->setCellValue('K' . (2 + $i), $price);
-            
+
             $sheet->setCellValue('N' . (2 + $i), implode($material, ', '));
             $sheet->setCellValue('O' . (2 + $i), implode($technic, ', '));
             $sheet->setCellValue('P' . (2 + $i), implode($desc, ' '));
             $sheet->setCellValue('Q' . (2 + $i), implode($images_urls, ';'));
-            
+
             $sheet->setCellValue('R' . (2 + $i), $category);
             $sheet->setCellValue('S' . (2 + $i), $link_category);
             $sheet->setCellValue('T' . (2 + $i), $other);
-            $sheet->setCellValue('U' . (2 + $i), $image_name);*/
           }
         }
       }
-      
-      //echo $file_name.'</br>';
-      
+
       $objWriter->save(__DIR__ . '/excel/' . $file_name . '.xlsx');
       $xls->disconnectWorksheets();
       unset($objWriter, $xls);
     }
-    
+
     $finish = microtime(true);
     $delta = round($finish - $start);
     $minute = floor($delta / 60);
     $second = abs(floor($delta / 60) * 60 - $delta);
-    
+
     echo $number + 1 . '. Success - ' . $link_category . '! Execution time:' . $minute . ' min ' . $second . ' sec</br>' . PHP_EOL;
   }
 }
@@ -270,7 +261,7 @@ $second = abs(floor($delta / 60) * 60 - $delta);
 $html->clear();
 unset($html);
 
-//echo '</br>Success! Execution time: ' . $minute . ' min ' . $second . ' sec';
+echo '</br>Success! Execution time: ' . $minute . ' min ' . $second . ' sec';
 
 die();
 
