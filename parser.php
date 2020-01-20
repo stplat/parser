@@ -217,7 +217,7 @@ if (!empty($links_category)) {
               array_push($images_urls, $image_file_name);
             }
 
-            $sheet->setCellValue('B' . (2 + $i), $brand);
+            $sheet->setCellValue('B' . (2 + $i), $name);
             $sheet->setCellValue('C' . (2 + $i), $image_name);
             $sheet->setCellValue('D' . (2 + $i), $brand);
             $sheet->setCellValue('E' . (2 + $i), $article);
