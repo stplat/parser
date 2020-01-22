@@ -24,7 +24,7 @@ $objWriter = new PHPExcel_Writer_Excel2007($excel);
 $maxCell = $excel->getActiveSheet()->getHighestRowAndColumn();
 $data = $excel->getActiveSheet()->rangeToArray('A1:' . $maxCell['column'] . $maxCell['row']);
 
-foreach ($data as $key => $row) {
+/*foreach ($data as $key => $row) {
   foreach ($row as $i => $col) {
     if ($key != 0 && $i == 2) {
       $category = mb_strtolower(translit($col));
@@ -36,9 +36,9 @@ foreach ($data as $key => $row) {
 
 $objWriter->save(__DIR__ . '/category.xlsx');
 $excel->disconnectWorksheets();
-unset($objWriter, $excel);
+unset($objWriter, $excel);*/
 
-/*$query = "INSERT INTO `categories` (`id`, `category`, `subcategory`, `plug`, `available`, `meta_keywords`, `meta_description`, `meta_title`, `created_at`, `updated_at`) VALUES ";
+$query = "INSERT INTO `categories` (`id`, `category`, `subcategory`, `plug`, `available`, `meta_keywords`, `meta_description`, `meta_title`, `created_at`, `updated_at`) VALUES ";
 
 
 foreach ($data as $key => $row) {
@@ -54,9 +54,9 @@ foreach ($data as $key => $row) {
 }
 
 $query = preg_replace('/, $/', '', $query);
-echo $query;*/
+echo $query;
 
-//$result = $connect->query($query);
+$result = $connect->query($query);
 
 
 
