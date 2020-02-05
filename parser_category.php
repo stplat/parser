@@ -12,7 +12,7 @@ function translit($str) {
   return str_replace($rus, $lat, $str);
 }
 
-echo translit('подвеска_пудо_святителя_спиридона_стоптанный_тапочек');
+echo translit('подвеска-пудо-святителя-спиридона-стоптанный-тапочек');
 
 global $parse_category;
 
