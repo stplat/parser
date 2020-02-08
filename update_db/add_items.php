@@ -5,7 +5,7 @@ require_once '../Classes/PHPExcel/Writer/Excel2007.php';
 require_once '../Classes/PHPExcel/IOFactory.php';
 
 //Подключаемся к БД Хост, Имя пользователя MySQL, его пароль, имя нашей базы
-$connect = new mysqli("localhost", "root", "", "vecheria_laravel");
+$connect = new mysqli("localhost", "root", "", "srv67580_vech_lar");
 
 //Кодировка данных получаемых из базы
 $connect->query("SET NAMES 'utf8' ");
@@ -24,7 +24,7 @@ foreach ($data as $key => $row) {
     $query .= "(NULL, ";
     
     foreach ($row as $i => $col) {
-      $query .= "'" . $col . "', ";
+      $query .= "'" . (string)$col . "', ";
     }
     
     $query .= "CURRENT_TIME(), CURRENT_TIME()), ";
@@ -32,7 +32,7 @@ foreach ($data as $key => $row) {
 }
 
 $query = preg_replace('/, $/', '', $query);
-echo $query;
+echo htmlspecialchars($query);
 
 //$result = $connect->query($query);
 
