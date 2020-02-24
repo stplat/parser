@@ -11,20 +11,20 @@ $connect = new mysqli("localhost", "root", "", "srv67580_vech_lar");
 $connect->query("SET NAMES 'utf8' ");
 
 
-$excel = PHPExcel_IOFactory::load('items.xlsx');
+$excel = PHPExcel_IOFactory::load('product_to_category.xlsx');
 
 $maxCell = $excel->getActiveSheet()->getHighestRowAndColumn();
 $data = $excel->getActiveSheet()->rangeToArray('A1:' . $maxCell['column'] . $maxCell['row']);
 
-$query = "INSERT INTO `items` (`id`, `subcategory_id`, `name`, `plug`, `manufacturer`, `article`, `meta_keywords`, `meta_description`, `meta_title`, `available`, `weight`, `price`, `dimension`, `comment`, `material`, `technic`, `description`, `image_path`, `created_at`, `updated_at`) VALUES ";
+$query = "INSERT INTO `product_to_category` (`product_id`, `category_id`, `created_at`, `updated_at`) VALUES ";
 
 
 foreach ($data as $key => $row) {
   if ($key != 0) {
-    $query .= "(NULL, ";
+    $query .= "(";
     
     foreach ($row as $i => $col) {
-      $query .= "'" . (string)$col . "', ";
+      $query .= "'" . $col . "', ";
     }
     
     $query .= "CURRENT_TIME(), CURRENT_TIME()), ";
