@@ -38,7 +38,7 @@ $objWriter->save(__DIR__ . '/category.xlsx');
 $excel->disconnectWorksheets();
 unset($objWriter, $excel);*/
 
-$query = "INSERT INTO `category` (`category_id`, `category`, `subcategory`, `slug`, `available`, `meta_keywords`, `meta_description`, `meta_title`, `comment`, `created_at`, `updated_at`) VALUES ";
+$query = "INSERT INTO `category` (`category_id`, `name`, `name_2st`, `slug`, `available`, `meta_keywords`, `meta_description`, `meta_title`, `comment`, `created_at`, `updated_at`) VALUES ";
 
 
 foreach ($data as $key => $row) {
