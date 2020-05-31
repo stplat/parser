@@ -11,12 +11,13 @@ $connect = new mysqli("localhost", "root", "", "srv67580_vech_lar");
 $connect->query("SET NAMES 'utf8' ");
 
 
-$excel = PHPExcel_IOFactory::load('product_to_category.xlsx');
+$excel = PHPExcel_IOFactory::load('product_to_category_sushi.xlsx');
 
 $maxCell = $excel->getActiveSheet()->getHighestRowAndColumn();
 $data = $excel->getActiveSheet()->rangeToArray('A1:' . $maxCell['column'] . $maxCell['row']);
 
-$query = "INSERT INTO `product_to_category` (`product_id`, `category_id`, `created_at`, `updated_at`) VALUES ";
+$query = "TRUNCATE TABLE product_to_category; ";
+$query .= "INSERT INTO `product_to_category` (`product_id`, `category_id`, `created_at`, `updated_at`) VALUES ";
 
 
 foreach ($data as $key => $row) {

@@ -16,7 +16,7 @@ function translit($str) {
   return str_replace($rus, $lat, $str);
 }
 
-$excel = PHPExcel_IOFactory::load('category.xlsx');
+$excel = PHPExcel_IOFactory::load('category_sushi.xlsx');
 $excel->setActiveSheetIndex(0);
 $sheet = $excel->getActiveSheet();
 $objWriter = new PHPExcel_Writer_Excel2007($excel);
@@ -38,7 +38,8 @@ $objWriter->save(__DIR__ . '/category.xlsx');
 $excel->disconnectWorksheets();
 unset($objWriter, $excel);*/
 
-$query = "INSERT INTO `category` (`category_id`, `name`, `name_2st`, `slug`, `available`, `meta_keywords`, `meta_description`, `meta_title`, `comment`, `created_at`, `updated_at`) VALUES ";
+$query = "TRUNCATE TABLE category; ";
+$query .= "INSERT INTO `category` (`category_id`, `name`, `name_2st`, `slug`, `available`, `meta_keywords`, `meta_description`, `meta_title`, `comment`, `created_at`, `updated_at`) VALUES ";
 
 
 foreach ($data as $key => $row) {
