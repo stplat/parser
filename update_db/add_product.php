@@ -16,7 +16,7 @@ function translit($str) {
   return str_replace($rus, $lat, $str);
 }
 
-$excel = PHPExcel_IOFactory::load('product_sushi.xlsx');
+$excel = PHPExcel_IOFactory::load('product.xlsx');
 
 $maxCell = $excel->getActiveSheet()->getHighestRowAndColumn();
 $data = $excel->getActiveSheet()->rangeToArray('A1:' . $maxCell['column'] . $maxCell['row']);
